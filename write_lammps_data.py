@@ -594,7 +594,7 @@ def lammps_inputs(args):
         infile.write('read_data       ' + data_name + read_data_append_string + '\n')
         
         infile.write('\n')
-        infile.write('# kspace_style    pppm 0.0000001 # Ewald accuracy (for ZIF-FF case) \n')
+        infile.write('# kspace_style pppm 0.0000001 # Ewald accuracy (for ZIF-FF case) \n')
         
         infile.write('\n')
         infile.write('neighbor 2.0 bin \n')
@@ -605,9 +605,17 @@ def lammps_inputs(args):
         infile.write('thermo_style custom step time etotal ke temp pe emol evdwl ecoul elong etail vol press \n')
         infile.write('thermo_modify line multi format float %20.12f \n')
         infile.write('\n')
-        infile.write('dump 1 all custom 100 cfg/run.*.cfg mass type xs ys zs id type \n')
-        infile.write('#dump 2 all cfg 100 cfg/run.*.cfg mass type xs ys zs id type \n')
-        infile.write('#dump_modify 2 element C C H N Zn # you set element name for data file \n')
+        infile.write('dump 1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id type \n')
+        infile.write('dump_modify 1 element ')
+        for aty in FF.pair_data['params']:
+            comment = FF.pair_data['comments'][aty]
+            # Convert list to string (if comment is a list)
+            if isinstance(comment, list):
+                comment = "".join(comment)
+            element = comment[0:2]
+            element = element.replace("_", "")
+            infile.write(element + ' ')
+        infile.write('# you could check them using data file \n')
         
         infile.write('\n')
         infile.write('timestep 1.0 # 1.0 [fs] \n')
