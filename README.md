@@ -53,7 +53,7 @@ conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field UFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 2x2x2
 ```
-- ZIF-FF (I haven't been able to fix the code yet.)
+- ZIF-FF (The crucial Zn parameter is missing.)
 ```
 conda activate cif2lammps_env
 cd cif2lammps
