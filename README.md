@@ -125,3 +125,38 @@ Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/in
 ## For Minor changes and additions and Acknowledgment
 - This project (modified version) is/was partially supported by the following :
   + ATSUMITEC Co., Ltd.
+
+## Another information
+- Installation (ubuntu 22.04 LTS or WLS2, python 3.7 version)
+```
+conda deactivate
+conda remove -n cif2lammps_env --all)
+conda create -y -n cif2lammps_env python=3.7
+conda activate cif2lammps_env
+conda install -y networkx>=2.5
+conda install -y ase==3.20.1
+conda install -y pymatgen==2021.3.3
+git clone https://github.com/rytheranderson/cif2lammps.git
+```
+- Installation (ubuntu 22.04 LTS or WLS2, python 3.8 version)
+```
+conda deactivate
+conda remove -n cif2lammps_env --all)
+conda create -y -n cif2lammps_env python=3.8
+conda activate cif2lammps_env
+conda install -y networkx>=2.5
+conda install -y ase==3.20.1
+conda install -y pymatgen==2021.3.3
+git clone https://github.com/rytheranderson/cif2lammps.git
+```
+- Installation (ubuntu 22.04 LTS or WLS2, python 3.9 version)
+```
+conda deactivate
+conda remove -n cif2lammps_env --all)
+conda create -y -n cif2lammps_env python=3.9
+conda activate cif2lammps_env
+conda install -y networkx>=2.5
+conda install -y ase==3.20.1
+conda install -y pymatgen==2022.0.8
+git clone https://github.com/rytheranderson/cif2lammps.git
+```
