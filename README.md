@@ -15,7 +15,7 @@ not explicitly parameterized, so there is also a preliminary version of GAFF for
 UFF4MOF has the most robust atom typing functionality, based on connectivity and geometry. More force fields and the option to use custom force fields will be added. 
 Keep in mind this is the first version of the code, and I (Ryther) wrote it quite quickly, it is becoming more useful/general, but be aware that it may need to be adapted for specific usage cases. 
 
-## Installation (miniconda on Ubuntu 22.04 LTS or WLS2)
+## Installation (miniconda on Ubuntu 22.04 LTS or WSL2)
 ```
 conda deactivate
 conda remove -n cif2lammps_env --all
