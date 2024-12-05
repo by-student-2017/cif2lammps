@@ -13,6 +13,45 @@ not explicitly parameterized, so there is also a preliminary version of GAFF for
 UFF4MOF has the most robust atom typing functionality, based on connectivity and geometry. More force fields and the option to use custom force fields will be added. 
 Keep in mind this is the first version of the code, and I (Ryther) wrote it quite quickly, it is becoming more useful/general, but be aware that it may need to be adapted for specific usage cases. 
 
+## Installation
+```
+conda deactivate
+conda remove -n cif2lammps_env --all
+conda create -y -n cif2lammps_env python=3.8
+conda activate cif2lammps_env
+conda install -y networkx>=2.5
+conda install -y ase==3.20.1
+conda install -y pymatgen==2021.3.3
+git clone https://github.com/rytheranderson/cif2lammps.git
+```
+
+## Usage (get cif file from https://github.com/numat/RASPA2/tree/master/structures/mofs/cif and cif file in cifs directory.)
+- very simple command
+```
+cd cif2lammps
+python3 main_conversion.py --cifs ./../cifs --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+```
+- UFF4MOF
+```
+cd cif2lammps
+python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+```
+- Dreiding
+```
+cd cif2lammps
+python3 main_conversion.py --cifs ./../cifs --force_field Dreiding --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+```
+- UFF
+```
+cd cif2lammps
+python3 main_conversion.py --cifs ./../cifs --force_field UFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+```
+- ZIF-FF (I haven't been able to fix the code yet.)
+```
+cd cif2lammps
+python3 main_conversion.py --cifs ./../cifs --force_field ZIFFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge
+```
+
 ## Usage
 Generally speaking just run:
 ```
