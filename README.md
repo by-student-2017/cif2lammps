@@ -126,7 +126,7 @@ Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/in
 - This project (modified version) is/was partially supported by the following :
   + ATSUMITEC Co., Ltd.
 
-## Another information
+## Other information
 - Installation (ubuntu 22.04 LTS or WLS2, python 3.7 version)
 ```
 conda deactivate
