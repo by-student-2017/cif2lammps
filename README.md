@@ -1,7 +1,7 @@
 # cif2lammps
 ## Authors
 
-- Ryther Anderson
+- Ryther Anderson (original: https://github.com/rytheranderson/cif2lammps.git)
 
 - By STUDENT (Minor changes and additions)
 
