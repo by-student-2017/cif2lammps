@@ -59,11 +59,11 @@ conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field ZIFFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge --replication 2x2x2
 ```
-- MZHB (Zeolite)
+- MZHB (Zeolite) (It won't move beyond "skin for bond calculation is 0.2".)
 ```
 conda activate cif2lammps_env
 cd cif2lammps
-python3 main_conversion.py --cifs ./../cifs --force_field MZHB --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 2x2x2
+python3 main_conversion.py --cifs ./../cifs --force_field MZHB --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge --parallel
 ```
 
 ## Help
