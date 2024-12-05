@@ -127,6 +127,7 @@ Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/in
   + ATSUMITEC Co., Ltd.
 
 ## Other information
+None of the following installations worked properly without "--read_cifs_pymatgen". For ZIF-FF, there is a problem where integers in the data file become symbols (characters) containing information about the corresponding elements.
 - Installation (ubuntu 22.04 LTS or WLS2, python 3.7 version)
 ```
 conda deactivate
