@@ -3,6 +3,8 @@
 
 - Ryther Anderson
 
+- By STUDENT
+
 ## Motivation
 cif2lammps is a Python 2 or 3 program used to convert crystals (developed initially for metal-organic frameworks) to Large-scale Atomic Molecular Massively Parallel Simulator (LAMMPS) format. 
 
