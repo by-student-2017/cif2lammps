@@ -102,7 +102,7 @@ This flag switches charges ON, this means the pair_style and such will be update
 ```
 The CIF cell will be replicated to the shape QxRxS or to have atleast N atoms, in the latter case the most cubic possible shape is used.
 ```
---read_cif_pymatgen
+--read_cifs_pymatgen
 ```
 Switches ON reading the inputs CIFs using pymatgen i/o. This can be used to read most CIF formats. The bond topology will also be determined using the Atomic Simulation Environment (ASE).
 Keep in mind that this might not work as expected in all cases. Bonds are typed in this scheme according to length, which also may not work as expected (use with caution).
