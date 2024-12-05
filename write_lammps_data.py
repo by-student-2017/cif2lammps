@@ -593,8 +593,9 @@ def lammps_inputs(args):
         infile.write('box             tilt large\n')
         infile.write('read_data       ' + data_name + read_data_append_string + '\n')
         
-        infile.write('\n')
-        infile.write('# kspace_style pppm 0.0000001 # Ewald accuracy (for ZIF-FF case) \n')
+        if charges:
+          infile.write('\n')
+          infile.write('kspace_style pppm 1e-7 # Ewald accuracy \n')
         
         infile.write('\n')
         infile.write('neighbor 2.0 bin \n')
