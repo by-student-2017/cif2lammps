@@ -33,7 +33,7 @@ Get cif file from https://github.com/numat/RASPA2/tree/master/structures/mofs/ci
 ```
 conda activate cif2lammps_env
 cd cif2lammps
-python3 main_conversion.py --cifs ./../cifs --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 2x2x2
+python3 main_conversion.py --cifs ./../cifs --outdir ./../unopt_lammps_data --read_cifs_pymatgen
 ```
 - UFF4MOF
 ```
