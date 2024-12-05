@@ -101,3 +101,6 @@ Anaconda convers all the basic requirements. If you intend to use the --read_cif
 Install instructions for pymatgen can be found here: https://pymatgen.org/installation.html.
 Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/install.html.
 
+## References
+[1] Park, H., Yan, X., Zhu, R. et al. A generative artificial intelligence framework based on a molecular diffusion model for the design of metal-organic frameworks for carbon capture. Commun Chem 7, 21 (2024). https://doi.org/10.1038/s42004-023-01090-2
+
