@@ -31,26 +31,31 @@ git clone https://github.com/rytheranderson/cif2lammps.git
 Get cif file from https://github.com/numat/RASPA2/tree/master/structures/mofs/cif and cif file in cifs directory.
 - very simple command
 ```
+conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --outdir ./../unopt_lammps_data --read_cifs_pymatgen
 ```
 - UFF4MOF
 ```
+conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen
 ```
 - Dreiding
 ```
+conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field Dreiding --outdir ./../unopt_lammps_data --read_cifs_pymatgen
 ```
 - UFF
 ```
+conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field UFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen
 ```
 - ZIF-FF (I haven't been able to fix the code yet.)
 ```
+conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field ZIFFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge
 ```
