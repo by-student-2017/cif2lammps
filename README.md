@@ -25,7 +25,8 @@ conda install -y pymatgen==2021.3.3
 git clone https://github.com/rytheranderson/cif2lammps.git
 ```
 
-## Usage (get cif file from https://github.com/numat/RASPA2/tree/master/structures/mofs/cif and cif file in cifs directory.)
+## Usage
+Get cif file from https://github.com/numat/RASPA2/tree/master/structures/mofs/cif and cif file in cifs directory.
 - very simple command
 ```
 cd cif2lammps
