@@ -59,7 +59,7 @@ conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field ZIFFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge --replication 2x2x2
 ```
-- MZHB (zeolite)
+- MZHB (Zeolite)
 ```
 conda activate cif2lammps_env
 cd cif2lammps
