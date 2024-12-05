@@ -33,31 +33,36 @@ Get cif file from https://github.com/numat/RASPA2/tree/master/structures/mofs/ci
 ```
 conda activate cif2lammps_env
 cd cif2lammps
-python3 main_conversion.py --cifs ./../cifs --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+python3 main_conversion.py --cifs ./../cifs --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 2x2x2
 ```
 - UFF4MOF
 ```
 conda activate cif2lammps_env
 cd cif2lammps
-python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 2x2x2
 ```
 - Dreiding
 ```
 conda activate cif2lammps_env
 cd cif2lammps
-python3 main_conversion.py --cifs ./../cifs --force_field Dreiding --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+python3 main_conversion.py --cifs ./../cifs --force_field Dreiding --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 2x2x2
 ```
 - UFF
 ```
 conda activate cif2lammps_env
 cd cif2lammps
-python3 main_conversion.py --cifs ./../cifs --force_field UFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen
+python3 main_conversion.py --cifs ./../cifs --force_field UFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 2x2x2
 ```
 - ZIF-FF (I haven't been able to fix the code yet.)
 ```
 conda activate cif2lammps_env
 cd cif2lammps
-python3 main_conversion.py --cifs ./../cifs --force_field ZIFFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge
+python3 main_conversion.py --cifs ./../cifs --force_field ZIFFF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge --replication 2x2x2
+```
+
+## Help
+```
+python3 main_conversion.py -h
 ```
 
 ## Usage
