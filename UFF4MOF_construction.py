@@ -372,14 +372,9 @@ class UFF4MOF(force_field):
 
                     # highly connected metals (max of 12 neighbors)
                     elif 7 <= len(nbors) <= 14:
-                        options = ['8f4', '6+3', '3+5']
+                        options = ['8f4', '3+5', '3+6', '3+7', '4+4', '5+2', '6+3', '6+4', '6+5', '6+6']
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
-                    # Cd node
-                    elif element_symbol == 'Cd':
-                        ty = 'Cd3+2'
-                        hyb = 'NA'
-                    # Cr node
                     typical_elements = ['H', 'B', 'C', 'N', 'O', 'F', 'Si', 'P', 'S', 'Cl', 'Br', 'I']
                     if element_symbol == 'Cr':
                         if len(nbor_symbols) == 5 and all(n in typical_elements for n in nbor_symbols):
