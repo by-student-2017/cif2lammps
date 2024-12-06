@@ -80,7 +80,7 @@ python3 main_conversion.py -h
 ## Charge
 - PACMOF: https://github.com/arung-northwestern/pacmof
 - MOPCA: https://github.com/openmopac/mopac (Recent open source versions can also handle periodic structures.) (Japanese paper: https://doi.org/10.5571/synth.2.60)
-- Gasteiger charge (RDKit): https://www.rdkit.org/docs/source/rdkit.Chem.rdPartialCharges.html
+- Gasteiger method (RDKit): https://www.rdkit.org/docs/source/rdkit.Chem.rdPartialCharges.html
 - Psi4: https://psicode.org/ (Professor Hayashi of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.)
 
 ## Usage
