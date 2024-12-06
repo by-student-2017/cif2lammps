@@ -133,7 +133,7 @@ Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/in
 
 ## References
 [1] Park, H., Yan, X., Zhu, R. et al. A generative artificial intelligence framework based on a molecular diffusion model for the design of metal-organic frameworks for carbon capture. Commun Chem 7, 21 (2024). https://doi.org/10.1038/s42004-023-01090-2 (Open Access)
-[2] Y. Fukunishi et al., Synthesiology 2 (2009) 60-68. (Japanese): https://doi.org/10.5571/synth.2.60
+[2] Y. Fukunishi et al., Synthesiology 2 (2009) 60-68. (Japanese): https://doi.org/10.5571/synth.2.60 (In docking calculations (sievgene) of 132 protein-compound complexes, the correct structure was obtained with a probability of 56% (accuracy 2 [A]) using RHF/6-31G*, which was only 2-3% lower for MOPAC AM1 charge and only 5% lower for Gasteiger charge. Even in small-scale drug screening experiments of about 10,000 compounds, the hit rate was better with more accurate charge, but the Gasteiger charge was only a few percent lower.)
 
 ## For Minor changes and additions and Acknowledgment
 - This project (modified version) is/was partially supported by the following :
