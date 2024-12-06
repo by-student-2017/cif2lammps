@@ -72,6 +72,7 @@ python3 main_conversion.py -h
 ```
 
 ## Current known issues
+- If you do not add the option "--read_cifs_pymatgen", no file will be output.
 - A cif file that does not have an occupancy count of 1 must be rewritten so that the occupancy count is 1 at each site and the average occupancy count is also 1.
 - The parameters are listed in "*_constants.py" such as UFF4MOF_constants.py. However, pymatgen will naturally stop if there is a parameter that is not listed. COF-5.cif is a typical example, where even though there are several Boron parameters, there is no "B" so it stops.
 - To address these issues, the code and parameters need to be rewritten. Note that reference [1] is for MOF, not COF etc. There is still a lot of room for research.
