@@ -88,6 +88,7 @@ In docking calculations (sievgene) of 132 protein-compound complexes, the correc
 
 
 ## MIL-47: charge equilibration vs. DFT-derived charges [3] and PM7 (MOPAC)
+MOPAC became open source from the 2016 version, and it is now possible to calculate periodic structures (using Tv) free of charge.
 | type | V0+      | V2+      | V4+      | DFT [3]  | PM7  |
 |------|----------|----------|----------|------|------|
 | V    | 2.67677  | 1.45833  | 1.83592  | 1.68 | 1.72 |
