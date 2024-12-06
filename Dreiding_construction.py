@@ -41,6 +41,14 @@ class Dreiding(force_field):
                 if element_symbol == 'H':
                     ty = element_symbol + '_'
                     hyb = 'sp1'
+                # Group 5 (Boron)
+                elif element_symbol == 'B':
+                    if len(nbors) == 3:
+                        ty = element_symbol + '_' + str(len(nbors) - 1)
+                        hyb = 'sp2'
+                    elif len(nbors) == 2:
+                        ty = element_symbol + '_' + str(len(nbors) - 1)
+                        hyb = 'sp1'
                 # Group 6
                 elif element_symbol in ('C', 'Si'):
                     ty = element_symbol + '_' + str(len(nbors) - 1)

@@ -43,12 +43,12 @@ class UFF(force_field):
                     hyb = 'sp1'
                 # Group 5 (Boron)
                 elif element_symbol == 'B':
-                    if len(nbors) == 3 and 'C' in nbor_symbols and 'O' in nbor_symbols:
-                        ty = 'B_3'
+                    if len(nbors) == 3:
+                        ty = element_symbol + '_' + str(len(nbors) - 1)
                         hyb = 'sp2'
-                    elif len(nbors) == 2 and 'C' in nbor_symbols and 'O' in nbor_symbols:
-                        ty = 'B_2'
-                        hyb = 'sp2'
+                    elif len(nbors) == 2:
+                        ty = element_symbol + '_' + str(len(nbors) - 1)
+                        hyb = 'sp1'
                 # Group 6
                 elif element_symbol in ('C', 'Si'):
                     if len(element_symbol) == 1:

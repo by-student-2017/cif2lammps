@@ -110,6 +110,7 @@ class UFF4MOF(force_field):
         for atom in SG.nodes(data=True):
 
             ty = None
+            hyb = None # Initialize hyb with a default value
             name, inf = atom
             element_symbol = inf['element_symbol']
             nbors = [a for a in SG.neighbors(name)]
