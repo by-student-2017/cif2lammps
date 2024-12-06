@@ -249,17 +249,17 @@ class UFF4MOF(force_field):
                         elif len(nbors) == 3 and len([i for i in nbor_symbols if i in metals]) > 1:
                             # trigonal geometry
                             #if dist_triangle < dist_tetrahedral and not any(i in ['Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
-                            if dist_triangle < dist_tetrahedral and not any(i in ['Mg', 'Cd', 'Ni', 'Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
+                            if dist_triangle < dist_tetrahedral and not any(i in ['Cr', 'Mg', 'Cd', 'Ni', 'Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
                                 ty = 'O_2_z'
                                 hyb = 'sp2'
                             # sometimes oxygens in Zr6 and analagous nodes can have near trigonal geometry, still want O_3_f, however
                             #elif dist_triangle < dist_tetrahedral and any(i in ['Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
-                            elif dist_triangle < dist_tetrahedral and any(i in ['Mg', 'Cd', 'Ni', 'Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
+                            elif dist_triangle < dist_tetrahedral and any(i in ['Cr', 'Mg', 'Cd', 'Ni', 'Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
                                 ty = 'O_3_f'
                                 hyb = 'sp2'
                             # tetrahedral-like geometry
                             #elif dist_tetrahedral < dist_triangle and any(i in ['Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
-                            elif dist_tetrahedral < dist_triangle and any(i in ['Mg', 'Cd', 'Ni', 'Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
+                            elif dist_tetrahedral < dist_triangle and any(i in ['Cr', 'Mg', 'Cd', 'Ni', 'Zr', 'Eu', 'Tb', 'U'] for i in nbor_symbols):
                                 ty = 'O_3_f'
                                 hyb = 'sp3'
                         # 4 connected oxygens bonded to metals
@@ -374,6 +374,13 @@ class UFF4MOF(force_field):
                     # Cd node
                     elif element_symbol == 'Cd':
                         ty = 'Cd3+2'
+                        hyb = 'NA'
+                    typical_elements = ['H', 'B', 'C', 'N', 'O', 'F', 'Si', 'P', 'S', 'Cl', 'Br', 'I']
+                    if element_symbol == 'Cr' and len(nbor_symbols) == 5 and all(n in typical_elements for n in nbor_symbols):
+                        ty = 'Cr5'
+                        hyb = 'NA'
+                    elif element_symbol == 'Cr' and len(nbor_symbols) == 6 and all(n in typical_elements for n in nbor_symbols):
+                        ty = 'Cr6+3'
                         hyb = 'NA'
 
                 # only one type for Bi
