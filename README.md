@@ -79,8 +79,8 @@ python3 main_conversion.py -h
 
 ## Charge
 - PACMOF: https://github.com/arung-northwestern/pacmof
-- MOPCA: MOPAC is now a free version and can handle periodic structures.
-- Psi4: Professor Hayashi of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.
+- MOPCA: https://github.com/openmopac/mopac
+- Psi4: https://psicode.org/ (Professor Hayashi of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.)
 
 ## Usage
 Generally speaking just run:
