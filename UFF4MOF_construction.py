@@ -175,8 +175,12 @@ class UFF4MOF(force_field):
                     hyb = 'sp1'
                 # Group 2
                 elif element_symbol == 'Mg':
-                    ty = 'Mg3+2'
-                    hyb = 'NA'
+                    if dist_square < dist_tetrahedral:
+                        ty = 'Mg6f3'
+                        hyb = 'NA'
+                    else:
+                        ty = 'Mg3+2'
+                        hyb = 'NA'
                 # Group 5
                 elif element_symbol == 'B':
                     if len(nbors) == 4:
@@ -319,32 +323,32 @@ class UFF4MOF(force_field):
                         options = ('1f1', '4f2', '4+2', '6f3', '6+3', '6+2', '6+4')
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
-                    # incomplete square planar
+                    # incomplete square planar (theta_0 == 90.0)
                     elif len(nbors) == 3 and dist_square < min(dist_tetrahedral, dist_triangle):
                         options = ('4f2', '4+2')
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
-                    # incomplete tetrahedron
+                    # incomplete tetrahedron (theta_0 == 109.4712)
                     elif len(nbors) == 3 and dist_tetrahedral < min(dist_square, dist_triangle):
                         options = ('3f2', '3+2')
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
-                    # trigonal, only Cu, Zn, Ag
+                    # trigonal, only Cu, Zn, Ag (theta_0 == 120.0)
                     elif len(nbors) == 3 and dist_triangle < min(dist_square, dist_tetrahedral):
                         options = ['2f2']
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
-                    # 4 connected, square planar
+                    # 4 connected, square planar (theta_0 = 90)
                     elif len(nbors) == 4 and dist_square < dist_tetrahedral:
                         options = ('4f2', '4+2', '6f3', '6+3', '6+2', '6+4')
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
-                    # 4 connected, tetrahedral 3+3 does not apply for As, Sb, Tl, Bi
+                    # 4 connected, tetrahedral 3+3 does not apply for As, Sb, Tl, Bi (theta_0 == 109.4712)
                     elif len(nbors) == 4 and (dist_tetrahedral < dist_square):
                         options = ('3f2', '3f4', '3+1', '3+2', '3+3', '3+4', '3+5', '3+6')
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
-                    # paddlewheels, 5 neighbors if bare, 6 neighbors if pillared, one should be another metal
+                    # paddlewheels, 5 neighbors if bare, 6 neighbors if pillared, one should be another metal (theta_0 == 90.0)
                     elif len(nbors) in (5,6) and any(i in metals for i in nbor_symbols):
                         if (dist_square < dist_tetrahedral):
                             options = ('4f2', '4+2', '6f3', '6+3', '6+2', '6+4')
@@ -356,19 +360,22 @@ class UFF4MOF(force_field):
                             message += 'The neighbors are ' + ' '.join(nbor_symbols)
                             warnings.warn(message)
 
-                    # M3O(CO2H)6 metals, e.g. MIL-100, paddlewheel options are secondary, followed by 8f4 (should give nearly correct geometry)
+                    # M3O(CO2H)6 metals, e.g. MIL-100, paddlewheel options are secondary, followed by 8f4 (should give nearly correct geometry) (theta_0 == 90.0)
                     elif len(nbors) in (5,6) and not any(i in metals for i in nbor_symbols) and (dist_square < dist_tetrahedral):
                         options = ('6f3', '6+2', '6+3', '6+4', '4f2', '4+2')
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
-                    # 5,6 connected, with near-tetrahedral angles
+                    # 5,6 connected, with near-tetrahedral angles (theta_0 == 109.4712)
                     elif len(nbors) in (5,6) and not any(i in metals for i in nbor_symbols) and (dist_tetrahedral < dist_square):
                         options = ('8f4', '3f2', '3f4', '3+1', '3+2', '3+3', '3+4', '3+5', '3+6')
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
                     # highly connected metals (max of 12 neighbors)
                     elif 7 <= len(nbors) <= 14:
-                        options = ['8f4']
+                        if element_symbol == 'V':
+                            options = ['3+5', '6+3', '3f2']
+                        else:
+                            options = ['8f4']
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
                     # Cd node
