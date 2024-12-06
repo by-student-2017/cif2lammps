@@ -76,6 +76,12 @@ python3 main_conversion.py -h
 - The parameters are listed in "*_constants.py" such as UFF4MOF_constants.py. However, pymatgen will naturally stop if there is a parameter that is not listed. COF-5.cif is a typical example, where even though there are several Boron parameters, there is no "B" so it stops.
 - To address these issues, the code and parameters need to be rewritten. Note that reference [1] is for MOF, not COF etc. There is still a lot of room for research.
 
+
+## Charge
+- PACMOF: https://github.com/arung-northwestern/pacmof
+- MOPCA: MOPAC is now a free version and can handle periodic structures.
+- Psi4: Professor Hayashi of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.
+
 ## Usage
 Generally speaking just run:
 ```
