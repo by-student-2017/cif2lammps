@@ -23,7 +23,7 @@ thermo_style custom step time etotal ke temp pe emol evdwl ecoul elong etail vol
 thermo_modify line multi format float %20.12f 
 
 dump 1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id type 
-dump_modify 1 element H C C O B # you could check them using data file 
+dump_modify 1 element C C B H O # you could check them using data file 
 
 timestep 1.0 # 1.0 [fs] 
 
