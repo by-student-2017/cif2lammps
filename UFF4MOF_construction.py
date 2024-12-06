@@ -372,10 +372,7 @@ class UFF4MOF(force_field):
 
                     # highly connected metals (max of 12 neighbors)
                     elif 7 <= len(nbors) <= 14:
-                        if element_symbol == 'V':
-                            options = ['3+5', '6+3', '3f2']
-                        else:
-                            options = ['8f4']
+                        options = ['8f4', '6+3', '3+5']
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
                     # Cd node
@@ -384,19 +381,16 @@ class UFF4MOF(force_field):
                         hyb = 'NA'
                     # Cr node
                     typical_elements = ['H', 'B', 'C', 'N', 'O', 'F', 'Si', 'P', 'S', 'Cl', 'Br', 'I']
-                    if element_symbol == 'Cr' and len(nbor_symbols) == 5 and all(n in typical_elements for n in nbor_symbols):
-                        ty = 'Cr5'
-                        hyb = 'NA'
-                    elif element_symbol == 'Cr' and len(nbor_symbols) == 6 and all(n in typical_elements for n in nbor_symbols):
-                        if (dist_square < dist_tetrahedral):
-                            options = ('4f2', '4+2', '6f3', '6+3', '6+2', '6+4')
+                    if element_symbol == 'Cr':
+                        if len(nbor_symbols) == 5 and all(n in typical_elements for n in nbor_symbols):
+                            ty = 'Cr5'
+                            hyb = 'NA'
+                        elif len(nbor_symbols) == 6 and all(n in typical_elements for n in nbor_symbols):
+                            options = ('4+2', '6f3')
                             ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
                         else:
-                            options = ('4f2', '4+2', '6f3', '6+3', '6+2', '6+4')
+                            options = ('6+3')
                             ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
-                            message = 'There is a ' + element_symbol + ' that has a near tetrahedral angle typed as ' + ty + '\n' 
-                            message += 'The neighbors are ' + ' '.join(nbor_symbols)
-                            warnings.warn(message)
 
                 # only one type for Bi
                 elif element_symbol in ('As', 'Bi', 'Tl', 'Sb'):
