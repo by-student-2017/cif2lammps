@@ -71,6 +71,10 @@ python3 main_conversion.py --cifs ./../cifs --force_field MZHB --outdir ./../uno
 python3 main_conversion.py -h
 ```
 
+## Current known issues
+- A cif file that does not have an occupancy count of 1 must be rewritten so that the occupancy count is 1 at each site and the average occupancy count is also 1.
+- To deal with these problems, it is necessary to rewrite the code and parameters. It is unclear how they did this in reference [1]. I would like to believe that they have rewritten it to be more sophisticated than the version presented here. I would have liked the revised files to be provided in the supplementary materials.
+
 ## Usage
 Generally speaking just run:
 ```
