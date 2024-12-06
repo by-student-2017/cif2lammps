@@ -88,7 +88,7 @@ In docking calculations (sievgene) of 132 protein-compound complexes, the correc
 
 
 ## Obtaining charges for MIL-47: charge equilibration vs. DFT-derived charges [3] and PM7 (MOPAC2016)
-type	V0+	V2+	V4+	DFT	PM7
+| type | 	V0+ | V2+ | V4+ | DFT [3] | PM7 | 
 V	2.67677	1.45833	1.83592	1.68	1.72
 O1	-0.986909	-0.527963	-0.661157	-0.6	-0.81
 O2	-0.712381	-0.439958	-0.516643	-0.52	-0.51
