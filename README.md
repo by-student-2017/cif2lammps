@@ -78,13 +78,11 @@ python3 main_conversion.py -h
 
 
 ## Charge
+In docking calculations (sievgene) of 132 protein-compound complexes, the correct structure was obtained with a probability of 56% (accuracy 2 [A]) using RHF/6-31G* and RESP, which was only 2-3% lower for MOPAC AM1 charge and only 5% lower for Gasteiger charge. Even in small-scale drug screening experiments of about 10,000 compounds, the hit rate was better with more accurate charge, but the Gasteiger charge was only a few percent lower.
 - PACMOF: https://github.com/arung-northwestern/pacmof
 - MOPCA: https://github.com/openmopac/mopac (Recent open source versions can also handle periodic structures.) (Japanese paper: https://doi.org/10.5571/synth.2.60)
 - Gasteiger method (RDKit): https://www.rdkit.org/docs/source/rdkit.Chem.rdPartialCharges.html
 - Psi4: https://psicode.org/ (Professor Hayashi of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.)
-
-Note (Ref [2]): In docking calculations (sievgene) of 132 protein-compound complexes, the correct structure was obtained with a probability of 56% (accuracy 2 [A]) using RHF/6-31G*, which was only 2-3% lower for MOPAC AM1 charge and only 5% lower for Gasteiger charge. Even in small-scale drug screening experiments of about 10,000 compounds, the hit rate was better with more accurate charge, but the Gasteiger charge was only a few percent lower.
-
 
 ## Usage
 Generally speaking just run:
