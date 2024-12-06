@@ -87,7 +87,7 @@ In docking calculations (sievgene) of 132 protein-compound complexes, the correc
 - Psi4: https://psicode.org/ (Professor Hayashi of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.)
 
 
-## MIL-47charge equilibration vs. DFT-derived charges [3] and PM7 (MOPAC2016)
+## MIL-47charge equilibration vs. DFT-derived charges [3] and PM7 (MOPAC)
 | type | V0+      | V2+      | V4+      | DFT [3]  | PM7  |
 |------|----------|----------|----------|------|------|
 | V    | 2.67677  | 1.45833  | 1.83592  | 1.68 | 1.72 |
