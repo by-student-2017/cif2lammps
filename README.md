@@ -198,3 +198,4 @@ conda install -y ase==3.20.1
 conda install -y pymatgen==2022.0.8
 git clone git clone https://github.com/by-student-2017/cif2lammps.git
 ```
+- It seems that the ImportError occurs because the gcd function has been removed from the fractions module in Python 3.10 and later. Instead, you need to use the gcd function from the math module, so you will need to rewrite your code. 
