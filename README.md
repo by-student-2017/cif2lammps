@@ -165,7 +165,7 @@ Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/in
 
 ## Other information
 None of the following installations worked properly without "--read_cifs_pymatgen". For ZIF-FF, there is a problem where integers in the data file become symbols (characters) containing information about the corresponding elements.
-- Installation (ubuntu 22.04 LTS or WLS2, python 3.7 version)
+- Installation (ubuntu 22.04 LTS or WSL2, python 3.7 version)
 ```
 conda deactivate
 conda remove -n cif2lammps_env --all)
@@ -176,7 +176,7 @@ conda install -y ase==3.20.1
 conda install -y pymatgen==2021.3.3
 git clone git clone https://github.com/by-student-2017/cif2lammps.git
 ```
-- Installation (ubuntu 22.04 LTS or WLS2, python 3.8 version)
+- Installation (ubuntu 22.04 LTS or WSL2, python 3.8 version)
 ```
 conda deactivate
 conda remove -n cif2lammps_env --all)
@@ -187,7 +187,7 @@ conda install -y ase==3.20.1
 conda install -y pymatgen==2021.3.3
 git clone git clone https://github.com/by-student-2017/cif2lammps.git
 ```
-- Installation (ubuntu 22.04 LTS or WLS2, python 3.9 version)
+- Installation (ubuntu 22.04 LTS or WSL2, python 3.9 version)
 ```
 conda deactivate
 conda remove -n cif2lammps_env --all)
