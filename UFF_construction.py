@@ -41,6 +41,10 @@ class UFF(force_field):
                 if element_symbol == 'H':
                     ty = element_symbol + '_'
                     hyb = 'sp1'
+                # Group 2
+                elif element_symbol == 'Mg':
+                    ty = 'Mg3+2'
+                    hyb = 'NA'
                 # Group 5
                 elif element_symbol == 'B':
                     if len(nbors) == 4:
@@ -128,13 +132,6 @@ class UFF(force_field):
                     elif len(nbors) in (7,8) and element_symbol == 'Zr':
                         ty = 'Zr3+4'
                         hyb = 'NA'
-                elif element_symbol == 'B':
-                    if len(nbors) == 3 and 'C' in nbor_symbols and 'O' in nbor_symbols:
-                        ty = 'B_3'
-                        hyb = 'sp2'
-                    elif len(nbors) == 2 and 'C' in nbor_symbols and 'O' in nbor_symbols:
-                        ty = 'B_2'
-                        hyb = 'sp2'
                 # if no type can be identified
                 else:
                     raise ValueError('No UFF type identified for ' + element_symbol + 'with neighbors ' + ' '.join(nbor_symbols))

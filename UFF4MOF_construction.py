@@ -173,6 +173,10 @@ class UFF4MOF(force_field):
                 if element_symbol == 'H':
                     ty = element_symbol + '_'
                     hyb = 'sp1'
+                # Group 2
+                elif element_symbol == 'Mg':
+                    ty = 'Mg3+2'
+                    hyb = 'NA'
                 # Group 5
                 elif element_symbol == 'B':
                     if len(nbors) == 4:
