@@ -136,6 +136,11 @@ class UFF(force_field):
                     elif element_symbol == 'Cd':
                         ty = 'Cd3+2'
                         hyb = 'NA'
+                    # V node
+                    elif element_symbol == 'V':
+                        ty = 'V_3+5'
+                        hyb = 'NA'
+                        
                 # if no type can be identified
                 else:
                     raise ValueError('No UFF type identified for ' + element_symbol + 'with neighbors ' + ' '.join(nbor_symbols))
