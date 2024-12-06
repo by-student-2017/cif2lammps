@@ -86,6 +86,21 @@ In docking calculations (sievgene) of 132 protein-compound complexes, the correc
 - Gasteiger method (RDKit): https://www.rdkit.org/docs/source/rdkit.Chem.rdPartialCharges.html
 - Psi4: https://psicode.org/ (Professor Hayashi of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.)
 
+
+## Obtaining charges for MIL-47: charge equilibration vs. DFT-derived charges [3] and PM7 (MOPAC2016)
+type	V0+	V2+	V4+	DFT	PM7
+V	2.67677	1.45833	1.83592	1.68	1.72
+O1	-0.986909	-0.527963	-0.661157	-0.6	-0.81
+O2	-0.712381	-0.439958	-0.516643	-0.52	-0.51
+O3	-0.693279	-0.427135	-0.501819	-0.52	-0.52
+C1	0.00680379	-0.0146643	-0.0110838	-0.15	-0.12
+H1	0.0434488	0.0574796	0.055858	0.12	0.15
+C2	0.0116383	-0.0118276	-0.00782077	-0.15	-0.12
+H2	0.0444475	0.0586772	0.0570134	0.12	0.15
+C3	-0.150672	-0.0720208	-0.083311	0.0	-0.04
+C4	0.605064	0.384265	0.420426	0.56	0.56
+
+
 ## Usage
 Generally speaking just run:
 ```
@@ -134,13 +149,17 @@ Anaconda convers all the basic requirements. If you intend to use the --read_cif
 Install instructions for pymatgen can be found here: https://pymatgen.org/installation.html.
 Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/install.html.
 
+
 ## References
 [1] Park, H., Yan, X., Zhu, R. et al. A generative artificial intelligence framework based on a molecular diffusion model for the design of metal-organic frameworks for carbon capture. Commun Chem 7, 21 (2024). https://doi.org/10.1038/s42004-023-01090-2 (Open Access)
 [2] Y. Fukunishi et al., Synthesiology 2 (2009) 60-68. (Japanese): https://doi.org/10.5571/synth.2.60
+[3] D. Dubbeldam et al., "RASPA 2.0: Molecular Software Package for Adsorption and Diffusion in (Flexible) Nanoporous Materials" (2020).
+
 
 ## For Minor changes and additions and Acknowledgment
 - This project (modified version) is/was partially supported by the following :
   + ATSUMITEC Co., Ltd.
+
 
 ## Other information
 None of the following installations worked properly without "--read_cifs_pymatgen". For ZIF-FF, there is a problem where integers in the data file become symbols (characters) containing information about the corresponding elements.
