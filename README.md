@@ -154,7 +154,7 @@ Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/in
 
 ## References
 [1] Park, H., Yan, X., Zhu, R. et al. A generative artificial intelligence framework based on a molecular diffusion model for the design of metal-organic frameworks for carbon capture. Commun Chem 7, 21 (2024). https://doi.org/10.1038/s42004-023-01090-2 (Open Access)  
-[2] Y. Fukunishi et al., Synthesiology 2 (2009) 60-68. (Japanese): https://doi.org/10.5571/synth.2.60  
+[2] Y. Fukunishi et al., Synthesiology 2 (2009) 60-68.: https://doi.org/10.5571/synth.2.60 (Open Access, Japanese)  
 [3] D. Dubbeldam et al., "RASPA 2.0: Molecular Software Package for Adsorption and Diffusion in (Flexible) Nanoporous Materials" (2020).  
 
 
