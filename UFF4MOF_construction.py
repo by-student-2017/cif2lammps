@@ -173,14 +173,6 @@ class UFF4MOF(force_field):
                 if element_symbol == 'H':
                     ty = element_symbol + '_'
                     hyb = 'sp1'
-                # Group 2
-                elif element_symbol == 'Mg':
-                    if dist_square < dist_tetrahedral:
-                        ty = 'Mg6f3'
-                        hyb = 'NA'
-                    else:
-                        ty = 'Mg3+2'
-                        hyb = 'NA'
                 # Group 5
                 elif element_symbol == 'B':
                     if len(nbors) == 4:
@@ -372,7 +364,7 @@ class UFF4MOF(force_field):
 
                     # highly connected metals (max of 12 neighbors)
                     elif 7 <= len(nbors) <= 14:
-                        options = ['8f4', '3+5', '3+6', '3+7', '4+4', '5+2', '6+3', '6+4', '6+5', '6+6']
+                        options = ['8f4', '6+6', '6+5', '6+4', '6+3', '6f3', '4+4', '3+7', '3+6', '3+5', '5+2', '3+2']
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
                     typical_elements = ['H', 'B', 'C', 'N', 'O', 'F', 'Si', 'P', 'S', 'Cl', 'Br', 'I']
