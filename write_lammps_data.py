@@ -629,9 +629,9 @@ def lammps_inputs(args):
         infile.write('fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 \n')
         infile.write('\n')
         if charges:
-            infile.write('run 100000 # 100 [ps] \n')
-        else:
             infile.write('run 200000 # 100 [ps] \n')
+        else:
+            infile.write('run 100000 # 100 [ps] \n')
         
         infile.write('\n')
         
