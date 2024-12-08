@@ -41,10 +41,6 @@ class UFF(force_field):
                 if element_symbol == 'H':
                     ty = element_symbol + '_'
                     hyb = 'sp1'
-                # Group 2
-                elif element_symbol == 'Mg':
-                    ty = 'Mg3+2'
-                    hyb = 'NA'
                 # Group 5
                 elif element_symbol == 'B':
                     if len(nbors) == 4:
@@ -139,6 +135,9 @@ class UFF(force_field):
                     # V node
                     elif element_symbol == 'V':
                         ty = 'V_3+5'
+                        hyb = 'NA'
+                    elif element_symbol == 'Mg':
+                        ty = 'Mg3+2'
                         hyb = 'NA'
                         
                 # if no type can be identified
