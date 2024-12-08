@@ -313,6 +313,7 @@ class UFF4MOF(force_field):
                     # 2 connected, linear
                     if len(nbors) == 2 and dist_linear < 60.0:
                         options = ('1f1', '4f2', '4+2', '6f3', '6+3', '6+2', '6+4')
+                        #options = ('6f3', '6+3', '6+2', '4f2', '4+2', '6+4', '1f1') # (RT or 273+85 [K]) and High pressure (about 10 - 14 MPa) case
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
                     # incomplete square planar (theta_0 == 90.0)
@@ -338,12 +339,15 @@ class UFF4MOF(force_field):
                     # 4 connected, tetrahedral 3+3 does not apply for As, Sb, Tl, Bi (theta_0 == 109.4712)
                     elif len(nbors) == 4 and (dist_tetrahedral < dist_square):
                         options = ('3f2', '3f4', '3+1', '3+2', '3+3', '3+4', '3+5', '3+6')
+                        #options = ('3f2', '3f4', '3+2', '3+3', '3+4', '3+5', '3+6', '3+1') # (RT or 273+85 [K]) and High pressure (about 10 - 14 MPa) case
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
                     # paddlewheels, 5 neighbors if bare, 6 neighbors if pillared, one should be another metal (theta_0 == 90.0)
                     elif len(nbors) in (5,6) and any(i in metals for i in nbor_symbols):
                         if (dist_square < dist_tetrahedral):
                             options = ('4f2', '4+2', '6f3', '6+3', '6+2', '6+4')
+                            #options = ('6f3', '6+3', '6+2', '4f2', '4+2', '6+4') # High pressure (about 10 - 14 MPa) case
+                            #options = ('6f3', '6+3', '6+2', '4f2', '4+2', '6+4') # 273+85 [K] and High pressure (about 10 - 14 MPa) case
                             ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
                         else:
                             options = ('4f2', '4+2', '6f3', '6+3', '6+2', '6+4')
@@ -360,11 +364,15 @@ class UFF4MOF(force_field):
                     # 5,6 connected, with near-tetrahedral angles (theta_0 == 109.4712)
                     elif len(nbors) in (5,6) and not any(i in metals for i in nbor_symbols) and (dist_tetrahedral < dist_square):
                         options = ('8f4', '3f2', '3f4', '3+1', '3+2', '3+3', '3+4', '3+5', '3+6')
+                        #options = ('3f2', '3f4', '3+1', '3+2', '3+3', '3+4', '3+5', '3+6', '8f4') # High pressure (about 10 - 14 MPa) case
+                        #options = ('3f2', '3f4', '3+2', '3+3', '3+4', '3+5', '3+6', '3+1', '8f4') # # 273+85 [K] and High pressure (about 10 - 14 MPa) case
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
                     # highly connected metals (max of 12 neighbors)
                     elif 7 <= len(nbors) <= 14:
-                        options = ['8f4', '6+6', '6+5', '6+4', '6+3', '6f3', '4+4', '3+7', '3+6', '3+5', '5+2', '3+2']
+                        options = ['8f4', '6+6', '6+5', '6+4', '6+3', '6f3', '4+4', '3+7', '3+6', '3+5', '5+2', '3+2'] # RT [K] and 0.1 MPa
+                        #options = ['6+6', '6+5', '6+4', '6+3', '6f3', '4+4', '3+7', '3+6', '3+5', '5+2', '3+2', '8f4'] # RT [K] and High pressure (about 10 - 14 MPa) case
+                        #options = ['6+6', '6+5', '6+4', '6+3', '6f3', '3+7', '3+6', '3+5', '4+4', '5+2', '3+2', '8f4'] # 273+85 [K] and High pressure (about 10 - 14 MPa) case
                         ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
 
                     typical_elements = ['H', 'B', 'C', 'N', 'O', 'F', 'Si', 'P', 'S', 'Cl', 'Br', 'I']
@@ -374,6 +382,7 @@ class UFF4MOF(force_field):
                             hyb = 'NA'
                         elif len(nbor_symbols) == 6 and all(n in typical_elements for n in nbor_symbols):
                             options = ('4+2', '6f3')
+                            #options = ('6f3', '4+2') # (RT or 273+85 [K]) and High pressure (about 10 - 14 MPa) case
                             ty = typing_loop(options, add_symbol, UFF4MOF_atom_parameters)
                         else:
                             options = ('6+3')
