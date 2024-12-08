@@ -84,7 +84,7 @@ In docking calculations (sievgene) of 132 protein-compound complexes, the correc
 - PACMOF: https://github.com/arung-northwestern/pacmof
 - MOPAC: https://github.com/openmopac/mopac (Recent open source versions can also handle periodic structures.) (Japanese paper: https://doi.org/10.5571/synth.2.60) (In the UCSF Chimera code, it has been used for proteins as AM1-bcc and has a proven track record.)
 - Gasteiger method (RDKit): https://www.rdkit.org/docs/source/rdkit.Chem.rdPartialCharges.html
-- Psi4: https://psicode.org/ (Dr. Hayashi (, who is the developer of Xenonpy.) of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.)
+- Psi4: https://psicode.org/ (Dr. Y. Hayashi (, who is the developer of Xenonpy.) of the Institute of Statistical Mathematics is using it in polymers. I don't know if it can be used in periodic structures.)
 
 
 ## MIL-47: charge equilibration vs. DFT-derived charges [3] and PM7 (MOPAC)
