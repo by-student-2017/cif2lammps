@@ -31,5 +31,5 @@ velocity all create 300.0 123456 # initial temperature [K] and random seed
 
 fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 
 
-run 100000 # 100 [ps] 
+run 100000 # 100 [ps] = 0.1 [ns]
 
