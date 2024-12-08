@@ -1,0 +1,35 @@
+units           real
+atom_style      full
+boundary        p p p
+
+bond_style      harmonic
+angle_style     hybrid cosine/periodic fourier
+dihedral_style  harmonic
+improper_style  fourier
+
+pair_style      lj/cut 12.5
+pair_modify     shift yes mix geometric
+special_bonds   lj 0.0 0.0 1.0
+
+dielectric      1.0
+box             tilt large
+read_data       data.ZIF-68_1x1x1
+
+neighbor 2.0 bin 
+neigh_modify every 2 delay 4 check yes 
+
+thermo 100 # Provide output every n steps 
+thermo_style custom step time etotal ke temp pe emol evdwl ecoul elong etail vol press 
+thermo_modify line multi format float %20.12f 
+
+dump 1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id type 
+dump_modify 1 element C C H N O Zn # you could check them using data file 
+
+timestep 1.0 # 1.0 [fs] 
+
+velocity all create 300.0 123456 # initial temperature [K] and random seed 
+
+fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 
+
+run 100000 # 50 [ps] 
+
