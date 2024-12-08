@@ -619,13 +619,19 @@ def lammps_inputs(args):
         infile.write('# you could check them using data file \n')
         
         infile.write('\n')
-        infile.write('timestep 1.0 # 1.0 [fs] \n')
+        if charges:
+            infile.write('timestep 0.5 # 0.5 [fs] \n')
+        else:
+            infile.write('timestep 1.0 # 1.0 [fs] \n')
         infile.write('\n')
         infile.write('velocity all create 300.0 123456 # initial temperature [K] and random seed \n')
         infile.write('\n')
         infile.write('fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 \n')
         infile.write('\n')
-        infile.write('run 100000 # 50 [ps] \n')
+        if charges:
+            infile.write('run 100000 # 100 [ps] \n')
+        else:
+            infile.write('run 200000 # 100 [ps] \n')
         
         infile.write('\n')
         
