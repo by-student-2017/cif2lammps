@@ -118,7 +118,8 @@ def lammps_inputs(args):
     maxIDs = (ty_atoms, ty_bonds, ty_angles, ty_dihedrals, ty_impropers)
     if add_molecule != None:
         molfile, infile_add_lines, extra_types = include_molecule_file(FF, maxIDs, add_molecule)
-        with open(outdir + os.sep + 'mol.' + suffix, 'w') as MF:
+        #with open(outdir + os.sep + 'mol.' + suffix, 'w') as MF:
+        with open(outdir + os.sep + 'H2O.txt', 'w') as MF:
             MF.write(molfile)
 
     a,b,c,alpha,beta,gamma = system['box']
@@ -411,6 +412,21 @@ def lammps_inputs(args):
         except AttributeError:
             pass
 
+        if add_molecule != None:
+            infile.write('\n')
+            infile.write('dielectric      1.0\n')
+            #
+            read_data_append_string = ''
+            if add_molecule != None:
+                read_data_append_string = ' '
+                et_strings = ['extra/atom/types', 'extra/bond/types', 'extra/angle/types', 'extra/dihedral/types', 'extra/improper/types']
+                for st,et in zip(et_strings, extra_types):
+                    if et != None:
+                        read_data_append_string += st + ' ' + str(et) + ' '
+            #
+            infile.write('box             tilt large\n')
+            infile.write('read_data       ' + data_name + read_data_append_string + '\n')
+
         infile.write('\n')
 
         if add_molecule != None:
@@ -578,20 +594,21 @@ def lammps_inputs(args):
                                                   str(FF.pair_data['H_type']) + '\n'
                     infile.write(group_line)
                     infile.write(shake_line)
-
-        infile.write('\n')
-        infile.write('dielectric      1.0\n')
-
-        read_data_append_string = ''
-        if add_molecule != None:
-            read_data_append_string = ' '
-            et_strings = ['extra/atom/types', 'extra/bond/types', 'extra/angle/types', 'extra/dihedral/types', 'extra/improper/types']
-            for st,et in zip(et_strings, extra_types):
-                if et != None:
-                    read_data_append_string += st + ' ' + str(et) + ' '
-
-        infile.write('box             tilt large\n')
-        infile.write('read_data       ' + data_name + read_data_append_string + '\n')
+        
+        if add_molecule == None:
+            infile.write('\n')
+            infile.write('dielectric      1.0\n')
+            #
+            read_data_append_string = ''
+            if add_molecule != None:
+                read_data_append_string = ' '
+                et_strings = ['extra/atom/types', 'extra/bond/types', 'extra/angle/types', 'extra/dihedral/types', 'extra/improper/types']
+                for st,et in zip(et_strings, extra_types):
+                    if et != None:
+                        read_data_append_string += st + ' ' + str(et) + ' '
+            #
+            infile.write('box             tilt large\n')
+            infile.write('read_data       ' + data_name + read_data_append_string + '\n')
         
         if charges:
           infile.write('\n')
@@ -608,14 +625,18 @@ def lammps_inputs(args):
         infile.write('\n')
         infile.write('dump 1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id type \n')
         infile.write('dump_modify 1 element ')
-        for aty in FF.pair_data['params']:
+        
+        for i, aty in enumerate(FF.pair_data['params']):
             comment = FF.pair_data['comments'][aty]
             # Convert list to string (if comment is a list)
             if isinstance(comment, list):
                 comment = "".join(comment)
             element = comment[0:2]
             element = element.replace("_", "")
-            infile.write(element + ' ')
+            if add_molecule != None and i >= len(FF.pair_data['params']) - 2:
+                infile.write(element + 'w ')
+            else:
+                infile.write(element + ' ')
         infile.write('# you could check them using data file \n')
         
         infile.write('\n')
