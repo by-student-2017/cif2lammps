@@ -17,7 +17,7 @@ TraPPE =  {
     'N2': {
         'pair': {
             'style': 'lj/cut/coul/long',
-            'vdW': {'N_N2': (0.0715, 3.31)},'N_com': (0.0,0.0)}, # epsilon NN/kB = 36.0 K = 0.0715 kcal/mol, sigma of NN = 3.31 Angstrom
+            'vdW': {'N_N2': (0.0715, 3.31),'N_com': (0.0,0.0)}, # epsilon NN/kB = 36.0 K = 0.0715 kcal/mol, sigma of NN = 3.31 Angstrom
             'charges': {'N_N2': -0.482, 'N_com': 0.964}  # q/e = -0.482 on N atoms, countercharge on COM (M)
         },
         'bonds': {('N_com', 'N_com'): ('harmonic', 5000.0, 0.550)},  # N-N bond length = 1.10 Angstrom (The value is set at 5000.0 to reflect the strength of the triple bond in the N2 molecule.)
@@ -28,7 +28,7 @@ TraPPE =  {
     'H2': { # H2-LJ-2S-q+/- TraPPE model
         'pair': {
             'style': 'lj/cut/coul/long',
-            'vdW': {'H_H2': (0.0016, 3.03)}, 'H_com': (0.0,0.0)},  # epsilon HH/kB = 8.06 K = 0.00160 kcal/mol, sigma of HH = 3.03 Angstrom
+            'vdW': {'H_H2': (0.0016, 3.03), 'H_com': (0.0,0.0)},  # epsilon HH/kB = 8.06 K = 0.00160 kcal/mol, sigma of HH = 3.03 Angstrom
             'charges': {'H_H2': 0.47, 'H_com': -0.94}  # q/e = 0.47 on H atoms, countercharge on COM (M)
         },
         'bonds': {('H_H2', 'H_com'): ('harmonic', 550.0, 0.3705)},  # H-H bond length = 0.741 Angstrom
