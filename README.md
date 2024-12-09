@@ -71,6 +71,12 @@ conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 1x1x1 --add_molecule H2O,TIP4P_cutoff,1
 ```
+- UFF4MOF + MX2 molecule (TraPPE type) (e.g., O2) (Not recommended)
+```
+conda activate cif2lammps_env
+cd cif2lammps
+python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 1x1x1 --add_molecule O2,TraPPE,1
+```
 
 ## Help
 ```
