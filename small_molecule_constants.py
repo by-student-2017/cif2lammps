@@ -12,7 +12,8 @@ TraPPE =  {
         'bonds': {('O_O2', 'O_com'): ('harmonic',1200.0,0.605)}, # molecule should be kept rigid, force constants don't matter (# O-O bond length = 1.21 Angstrom)
         'angles': {('O_O2', 'O_com', 'O_O2'): ('harmonic',500.0,180.0)}, # molecule should be kept rigid, force constants don't matter
         'dihedrals': None,
-        'impropers': None
+        'impropers': None,
+        'mass': {'O_O2': 15.9994, 'O_com': 0.1}
     },
     'N2': {
         'pair': {
@@ -23,7 +24,8 @@ TraPPE =  {
         'bonds': {('N_com', 'N_com'): ('harmonic', 5000.0, 0.550)},  # N-N bond length = 1.10 Angstrom (The value is set at 5000.0 to reflect the strength of the triple bond in the N2 molecule.)
         'angles': {('N_N2', 'N_com', 'N_N2'): ('harmonic',500.0,180.0)}, # molecule should be kept rigid, force constants don't matter
         'dihedrals': None,
-        'impropers': None
+        'impropers': None,
+        'mass': {'N_N2': 14.007, 'N_com': 0.1}
     },
     'H2': { # H2-LJ-2S-q+/- TraPPE model
         'pair': {
@@ -34,7 +36,8 @@ TraPPE =  {
         'bonds': {('H_H2', 'H_com'): ('harmonic', 550.0, 0.3705)},  # H-H bond length = 0.741 Angstrom
         'angles': {('H_H2', 'H_com', 'H_H2'): ('harmonic',500.0,180.0)}, # molecule should be kept rigid, force constants don't matter
         'dihedrals': None,
-        'impropers': None
+        'impropers': None,
+        'mass': {'H_H2': 1.00794, 'H_com': 0.1}
     },
     #'H2': {
     #    'pair': {

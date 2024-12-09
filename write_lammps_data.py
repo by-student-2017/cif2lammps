@@ -119,7 +119,14 @@ def lammps_inputs(args):
     if add_molecule != None:
         molfile, infile_add_lines, extra_types = include_molecule_file(FF, maxIDs, add_molecule)
         #with open(outdir + os.sep + 'mol.' + suffix, 'w') as MF:
-        with open(outdir + os.sep + 'H2O.txt', 'w') as MF:
+        first_line = molfile.split('\n')[0]
+        if 'TraPPE' in first_line:
+            print("TraPPE is mentioned in the first line of the molfile.")
+            sm_file_name = 'MX2.txt'
+        else:
+            print("TraPPE is not mentioned in the first line of the molfile.")
+            sm_file_name = 'H2O.txt'
+        with open(outdir + os.sep + sm_file_name, 'w') as MF:
             MF.write(molfile)
 
     a,b,c,alpha,beta,gamma = system['box']
@@ -480,8 +487,8 @@ def lammps_inputs(args):
             for pos,st in enumerate(style_list):
                 if 'lj/cut/tip4p/' in st:
                     add_arg = ' ' + ' '.join([ 
-                    str(FF.pair_data['O_type']), str(FF.pair_data['H_type']), 
-                    str(FF.pair_data['H2O_bond_type']), str(FF.pair_data['H2O_angle_type']), 
+                    str(FF.pair_data['M_type']), str(FF.pair_data['X_type']), 
+                    str(FF.pair_data['X2M_bond_type']), str(FF.pair_data['X2M_angle_type']), 
                     str(FF.pair_data['M_site_dist']), '12.5', '12.5',
                     ])
 
@@ -640,16 +647,29 @@ def lammps_inputs(args):
         infile.write('# you could check them using data file \n')
         
         infile.write('\n')
-        if charges:
+        if add_molecule != None:
+            infile.write('timestep 0.25 # 0.25 [fs] \n')
+        elif charges:
             infile.write('timestep 0.5 # 0.5 [fs] \n')
         else:
             infile.write('timestep 1.0 # 1.0 [fs] \n')
         infile.write('\n')
-        infile.write('velocity all create 300.0 123456 # initial temperature [K] and random seed \n')
+        if add_molecule != None:
+            infile.write('velocity all create  77.0 123456 # initial temperature [K] and random seed \n')
+        else:
+            infile.write('velocity all create 300.0 123456 # initial temperature [K] and random seed \n')
         infile.write('\n')
-        infile.write('fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 \n')
+        if add_molecule != None:
+            infile.write('fix 1 all npt temp  77.0 300.0 100.0 tri 1.0 1.0 1000.0 \n')
+            infile.write('run 80000 # 20 [ps] = 0.02 [ns] \n')
+            infile.write('unfix 1 \n')
+        else:
+            infile.write('fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 \n')
         infile.write('\n')
-        if charges:
+        if add_molecule != None:
+            infile.write('fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 \n')
+            infile.write('run 400000 # 100 [ps] = 0.1 [ns] \n')
+        elif charges:
             infile.write('run 200000 # 100 [ps] = 0.1 [ns] \n')
         else:
             infile.write('run 100000 # 100 [ps] = 0.1 [ns] \n')

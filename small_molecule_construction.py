@@ -364,6 +364,18 @@ def include_molecule_file(FF, maxIDs, add_molecule):
         FF.pair_data['H2O_angle_type'] = max_angle_ty + 1
         FF.pair_data['M_site_dist'] = M_site_dist
     
+    else:
+        
+        molfile, LJ_params, bond_params, angle_params, molnames, mass_dict, M_site_dist, extra_types = WMF.MX2(max_atom_ty, max_bond_ty, max_angle_ty, molname, model=model)
+        dihedral_params = None
+        improper_params = None
+        FF.pair_data['special_bonds'] = 'lj/coul 0.0 0.0 1.0'
+        FF.pair_data['M_type'] = max_atom_ty + 1
+        FF.pair_data['X_type'] = max_atom_ty + 2
+        FF.pair_data['X2M_bond_type'] = max_bond_ty + 1
+        FF.pair_data['X2M_angle_type'] = max_angle_ty + 1
+        FF.pair_data['M_site_dist'] = M_site_dist
+    
     add_LJ_style = LJ_params['style']
     if add_LJ_style not in FF.pair_data['style']:
         FF.pair_data['style'] = FF.pair_data['style'] + ' ' + add_LJ_style
@@ -392,7 +404,7 @@ def include_molecule_file(FF, maxIDs, add_molecule):
 
     if N > 0:
         create_line = ' '.join([str(N), str(seed0), 'NULL', 'mol', molnames[0], str(seed1), 'units', 'box'])
-        infile_add_lines.append('create_atoms    0 random ' + create_line)
+        infile_add_lines.append('create_atoms    0 random ' + create_line + ' overlap 2.0 maxtry 50')
 
     return molfile, infile_add_lines, extra_types
 
