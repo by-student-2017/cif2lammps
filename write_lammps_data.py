@@ -186,6 +186,8 @@ def lammps_inputs(args):
                 data.write('    {:<3}'.format(aty))
                 format_string = ' '.join(['{:{w}.{p}f}' if not np.issubdtype(x, np.integer) else '{:{w}}' for x in params[1:]])
                 data.write(format_string.format(*params[1:], w=12, p=5))
+                if isinstance(comment, str):
+                    comment = [comment]
                 data.write(' '.join([' #'] + comment))
                 data.write('\n')
 
