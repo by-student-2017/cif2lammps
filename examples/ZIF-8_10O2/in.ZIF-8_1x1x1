@@ -14,7 +14,7 @@ read_data       data.ZIF-8_1x1x1 extra/atom/types 2 extra/bond/types 1 extra/ang
 molecule        MX2_mol MX2.txt
 mass            6 0.1
 mass            7 15.9994
-create_atoms    0 random 10 883 NULL mol MX2_mol 5836 units box overlap 2.0 maxtry 50
+create_atoms    0 random 10 5162 NULL mol MX2_mol 444 units box overlap 2.0 maxtry 50
 bond_coeff      7 1200.0 0.605 # O_O2 O_com
 angle_coeff     11 harmonic 500.0 180.0 # O_O2 O_com O_O2
 
@@ -62,7 +62,7 @@ thermo_style custom step time etotal ke temp pe emol evdwl ecoul elong etail vol
 thermo_modify line multi format float %20.12f 
 
 dump 1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id type 
-dump_modify 1 element C C H N Zn Ow Ow # you could check them using data file 
+dump_modify 1 element C C H N Zn Om1 Om2 # you could check them using data file 
 
 timestep 0.25 # 0.25 [fs] 
 
