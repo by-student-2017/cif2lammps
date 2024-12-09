@@ -65,7 +65,7 @@ conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field MZHB --outdir ./../unopt_lammps_data --read_cifs_pymatgen --charge --parallel
 ```
-- UFF4MOF + H2O
+- UFF4MOF + H2O (failed)
 ```
 conda activate cif2lammps_env
 cd cif2lammps
