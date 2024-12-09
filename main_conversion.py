@@ -101,8 +101,9 @@ def run_conversion():
 
     if args.add_molecule != None:
         # should be name of molecule, model, number to add
-        add_molecule = args.add_molecule.split(', ')
+        add_molecule = args.add_molecule.split(',')
         add_molecule[2] = int(add_molecule[2])
+        print("read add_molecule settings:", add_molecule)
     else:
         add_molecule = args.add_molecule
 
