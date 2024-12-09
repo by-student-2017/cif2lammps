@@ -151,6 +151,8 @@ Angles
 #------------------------------------------------------------------------------------------------------------------
 from small_molecule_constants import TraPPE
 def MX2(last_atom_ID, last_bond_ID, last_angle_ID, molname, model):
+
+    print(f"----------------------------- ----------------------------- -----------------------------")
     print("read molecular parameters: ",molname)
     MX2_data = TraPPE[molname]
     #--------------------------------------------------------------------------
