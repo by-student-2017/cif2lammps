@@ -1,0 +1,77 @@
+units           real
+atom_style      full
+boundary        p p p
+
+bond_style      harmonic
+angle_style     hybrid fourier cosine/periodic harmonic
+dihedral_style  harmonic
+improper_style  fourier
+
+dielectric      1.0
+box             tilt large
+read_data       data.ZIF-8_1x1x1 extra/atom/types 2 extra/bond/types 1 extra/angle/types 1 
+
+molecule        MX2_mol MX2.txt
+mass            6 0.1
+mass            7 15.9994
+create_atoms    0 random 10 883 NULL mol MX2_mol 5836 units box overlap 2.0 maxtry 50
+bond_coeff      7 1200.0 0.605 # O_O2 O_com
+angle_coeff     11 harmonic 500.0 180.0 # O_O2 O_com O_O2
+
+pair_style      hybrid lj/cut 12.5 lj/cut/coul/long 12.5 
+pair_modify     shift yes mix geometric
+special_bonds   lj/coul 0.0 0.0 1.0
+kspace_style    ewald 1.0e-5
+
+pair_coeff   1   1   lj/cut                 0.105000   3.430851 # C_3 C_3           
+pair_coeff   2   2   lj/cut                 0.105000   3.430851 # C_R C_R           
+pair_coeff   3   3   lj/cut                 0.044000   2.571134 # H_ H_             
+pair_coeff   4   4   lj/cut                 0.069000   3.260689 # N_R N_R           
+pair_coeff   5   5   lj/cut                 0.124000   2.461553 # Zn3f2 Zn3f2       
+pair_coeff   7   7   lj/cut/coul/long       0.097400   3.020000 # O _ O 2           
+pair_coeff   6   6   lj/cut/coul/long       0.000000   0.000000 # O _ c o m         
+
+pair_coeff   1   2   lj/cut                 0.105000   3.430851 # C_3 C_R           
+pair_coeff   1   3   lj/cut                 0.067971   2.970047 # C_3 H_            
+pair_coeff   1   4   lj/cut                 0.085118   3.344688 # C_3 N_R           
+pair_coeff   1   5   lj/cut                 0.114105   2.906066 # C_3 Zn3f2         
+pair_coeff   1   7   lj/cut/coul/long       0.101129   3.218877 # C_3 O             
+pair_coeff   1   6   lj/cut/coul/long       0.000000   0.000000 # C_3 O             
+pair_coeff   2   3   lj/cut                 0.067971   2.970047 # C_R H_            
+pair_coeff   2   4   lj/cut                 0.085118   3.344688 # C_R N_R           
+pair_coeff   2   5   lj/cut                 0.114105   2.906066 # C_R Zn3f2         
+pair_coeff   2   7   lj/cut/coul/long       0.101129   3.218877 # C_R O             
+pair_coeff   2   6   lj/cut/coul/long       0.000000   0.000000 # C_R O             
+pair_coeff   3   4   lj/cut                 0.055100   2.895457 # H_ N_R            
+pair_coeff   3   5   lj/cut                 0.073865   2.515747 # H_ Zn3f2          
+pair_coeff   3   7   lj/cut/coul/long       0.065464   2.786544 # H_ O              
+pair_coeff   3   6   lj/cut/coul/long       0.000000   0.000000 # H_ O              
+pair_coeff   4   5   lj/cut                 0.092499   2.833083 # N_R Zn3f2         
+pair_coeff   4   7   lj/cut/coul/long       0.081979   3.138038 # N_R O             
+pair_coeff   4   6   lj/cut/coul/long       0.000000   0.000000 # N_R O             
+pair_coeff   5   7   lj/cut/coul/long       0.109898   2.726516 # Zn3f2 O           
+pair_coeff   5   6   lj/cut/coul/long       0.000000   0.000000 # Zn3f2 O           
+pair_coeff   7   6   lj/cut/coul/long       0.000000   0.000000 # O O               
+
+
+neighbor 2.0 bin 
+neigh_modify every 2 delay 4 check yes 
+
+thermo 100 # Provide output every n steps 
+thermo_style custom step time etotal ke temp pe emol evdwl ecoul elong etail vol press 
+thermo_modify line multi format float %20.12f 
+
+dump 1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id type 
+dump_modify 1 element C C H N Zn Ow Ow # you could check them using data file 
+
+timestep 0.25 # 0.25 [fs] 
+
+velocity all create  77.0 123456 # initial temperature [K] and random seed 
+
+fix 1 all npt temp  77.0 300.0 100.0 tri 1.0 1.0 1000.0 
+run 80000 # 20 [ps] = 0.02 [ns] 
+unfix 1 
+
+fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 
+run 400000 # 100 [ps] = 0.1 [ns] 
+

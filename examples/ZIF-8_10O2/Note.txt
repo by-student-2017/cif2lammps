@@ -1,0 +1,3 @@
+This is possible because the ZIF in RASPA files is set to 0.
+
+python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 1x1x1 --add_molecule O2,TraPPE,10
