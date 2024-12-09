@@ -640,8 +640,10 @@ def lammps_inputs(args):
                 comment = "".join(comment)
             element = comment[0:2]
             element = element.replace("_", "")
-            if add_molecule != None and i >= len(FF.pair_data['params']) - 2:
-                infile.write(element + 'w ')
+            if add_molecule != None and i >= len(FF.pair_data['params']) - 1:
+                infile.write(element + 'm2 ')
+            elif add_molecule != None and i >= len(FF.pair_data['params']) - 2:
+                infile.write(element + 'm1 ')
             else:
                 infile.write(element + ' ')
         infile.write('# you could check them using data file \n')
