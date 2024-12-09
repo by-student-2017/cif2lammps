@@ -110,7 +110,7 @@ def add_small_molecules(FF, ff_string):
                 SMG.nodes[n]['force_field_type'] = SMG.nodes[n]['element_symbol'] + '_' + ID_string
 
         # add COM sites where relevant, extend this list as new types are added
-        if ID_string in ('O2', 'N2'):
+        if ID_string in ('O2', 'N2', 'H2'):
 
             coords = []
             anchor = SMG.nodes[comp[0]]['fractional_position']
@@ -133,6 +133,8 @@ def add_small_molecules(FF, ff_string):
                 fft = 'O_com'
             elif ID_string == 'N2':
                 fft = 'N_com'
+            elif ID_string == 'H2':
+                fft = 'H_com'
 
             ndata =  {'element_symbol':'NA', 'mol_flag':mol_flag, 'index':index, 'force_field_type':fft, 'cartesian_position':ccom, 'fractional_position':fcom, 'charge':0.0, 'replication':np.array([0.0,0.0,0.0]), 'duplicated_version_of':None}
             edata =  {'sym_code':None, 'length':None, 'bond_type':None}
