@@ -75,7 +75,7 @@ python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../
 ```
 conda activate cif2lammps_env
 cd cif2lammps
-python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 1x1x1 --add_molecule O2,TraPPE,1
+python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 1x1x1 --add_molecule O2,TraPPE,10
 ```
 
 ## Help
