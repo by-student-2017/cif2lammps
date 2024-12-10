@@ -682,7 +682,7 @@ def lammps_inputs(args):
         if add_molecule != None:
             infile.write('\n')
             infile.write('# GCMC, 0.1 MPa (= 1 bar) to 14.7 MPa at 308 K \n')
-            infile.write('variable mu equal -5.46 # <- You need to enter (e.g. HOMO energy [eV] in MOPAC, etc.) \n')
+            infile.write('variable mu equal -0.5 # <- You need to enter (e.g. HOMO energy [eV] in MOPAC, etc.) \n')
             infile.write('group gas type '+str(i)+':'+str(i+1)+' \n')
             infile.write('variable ngas equal count(gas)/3 # The number of molecules \n')
             infile.write('variable  wtp equal mass(gas)/mass(all)*100 # Mass Percent Concentration, wt.% [dimensionless] (Absolute, Not excess) \n')
