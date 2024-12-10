@@ -1,8 +1,9 @@
 # The Siepmann Group: http://trappe.oit.umn.edu/
 # M. Barraco et al., J. Phys. Chem. A 2023, 127, 30, 6335-6346.:  https://doi.org/10.1021/acs.jpca.3c03212
 # vdW:kcal/mol, Angstrom
-# 1 [K] -> 1.380649e-23/4184*6.022e22 [kcal/mol]
-TraPPE =  {
+# 1 [K] = 1.380649e-23/4184*6.022e22 [kcal/mol]
+# 1 [kJ/mol] = 0.23900574 [kcal/mol]
+TraPPE =  { # O2, N2, H2, H2S, H2O, CO2, NO2, SO2
     'O2': { # oxygen (small)
         'pair': {
             'style': 'lj/cut/coul/long', 
@@ -39,28 +40,67 @@ TraPPE =  {
         'impropers': None,
         'mass': {'H_H2': 1.00794, 'H_com': 0.1}
     },
-    #'H2': {
-    #    'pair': {
-    #        'style': 'lj/cut/coul/long',
-    #        'vdW': {'H_H2': (0.0460, 2.958)},
-    #        'charges': {'H_H2': 0.0}
-    #    },
-    #    'bonds': {('H_H2', 'H_H2'): ('harmonic', 100.0, 0.74)},
-    #    'angles': None,
-    #    'dihedrals': None,
-    #    'impropers': None
-    #},
-    #'T2': {  # tritium (dummy)
-    #    'pair': {
-    #        'style': 'lj/cut/coul/long',
-    #        'vdW': {'T_T2': (0.0200, 2.96)},
-    #        'charges': {'T_T2': 0.0}
-    #    },
-    #    'bonds': {('T_T2', 'T_T2'): ('harmonic', 100.0, 0.74)},
-    #    'angles': None,
-    #    'dihedrals': None,
-    #    'impropers': None
-    #},
+    'Cl2': { # dummy, Uses: Disinfection and sterilization, bleach, chemical industry, pesticide manufacturing, pharmaceutical manufacturing
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'Cl_Cl2': (0.0298, 3.40), 'Cl_com': (0.0,0.0)},  # epsilon HH/kB = 8.06 K = 0.00160 kcal/mol, sigma of HH = 3.03 Angstrom
+            'charges': {'Cl_Cl2': 0.0, 'Cl_com': 0.0}  # q/e = 0.47 on H atoms, countercharge on COM (M)
+        },
+        'bonds': {('Cl_Cl2', 'Cl_com'): ('harmonic', 58.0, 0.9935)},
+        'angles': {('Cl_Cl2', 'Cl_com', 'Cl_Cl2'): ('harmonic', 50.0,180.0)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'Cl_Cl2': 35.453, 'Cl_com': 0.1}
+    },
+    # H2S: Applications: industrial production, environmental protection, medical research
+    'H2S': { # 3-3 model: M. S. Shah et al., J. Phys. Chem. B 2015, 119, 23, 7041-7052.: https://doi.org/10.1021/acs.jpcb.5b02536
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'S_H2S': (0.0248, 3.60), 'H_H2S': (0.0072, 2.50)},
+            'charges': {'S_H2S': -0.28, 'H_H2S': 0.14} # The 4-3 model is better, but the structure is more complicated. Therefore, I chose the 3-3, which is the next best option.
+        },
+        'bonds': {('S_H2S', 'H_H2S'): ('harmonic', 100.0, 1.34)},
+        'angles': {('H_H2S', 'S_H2S', 'H_H2S'): ('harmonic', 100.0, 92)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'S_H2S': 32.06, 'H_H2S': 1.00794}
+    },
+    'H2Se': { # dummy, Uses: Synthesis of organic selenium compounds, semiconductor manufacturing
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'Se_H2Se': (0.210, 4.10), 'H_H2Se': (0.0072, 2.50)},
+            'charges': {'Se_H2Se': -0.40, 'H_H2Se': 0.20}
+        },
+        'bonds': {('Se_H2Se', 'H_H2Se'): ('harmonic', 110.0, 1.47)},
+        'angles': {('H_H2Se', 'Se_H2Se', 'H_H2Se'): ('harmonic', 105.0, 91.5)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'Se_H2Se': 78.96, 'H_H2Se': 1.00794}
+    },
+    'H2Te': { # dummy, Uses: Semiconductor manufacturing
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'Se_H2Se': (0.210, 4.10), 'H_H2Se': (0.0072, 2.50)},
+            'charges': {'Te_H2Te': -0.40, 'H_H2Te': 0.20}
+        },
+        'bonds': {('Te_H2Te', 'H_H2Te'): ('harmonic', 115.0, 1.50)},
+        'angles': {('H_H2Te', 'Te_H2Te', 'H_H2Te'): ('harmonic', 110.0, 90.5)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'Te_H2Te': 127.60, 'H_H2Te': 1.00794}
+    },
+    'ClO2': { # dummy, Uses: Disinfection and sterilization
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'Cl_ClO2': (0.0147, 3.39), 'O_ClO2': (0.0157, 3.05)},
+            'charges': {'Cl_ClO2': 0.42, 'O_ClO2': -0.21}
+        },
+        'bonds': {('Cl_ClO2', 'O_ClO2'): ('harmonic', 130.0, 1.56)},
+        'angles': {('O_ClO2', 'Cl_ClO2', 'O_ClO2'): ('harmonic', 12.0, 116.5)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'Cl_ClO2': 35.453, 'O_ClO2': 15.9994}
+    },
     'H2O': { # SPC-pol3 (pol)
         'pair': {
             'style': 'lj/cut/coul/long',
@@ -72,28 +112,6 @@ TraPPE =  {
         'dihedrals': None,
         'impropers': None,
         'mass': {'O_w': 15.9994, 'H_w': 1.00794}
-    },
-    'CO': { # dummy
-        'pair': {
-            'style': 'lj/cut/coul/long',
-            'vdW': {'C_CO': (0.055, 3.75), 'O_CO': (0.170, 3.05)},
-            'charges': {'C_CO': 0.48, 'O_CO': -0.48}
-        },
-        'bonds': {('C_CO', 'O_CO'): ('harmonic', 100.0, 1.128)},
-        'angles': None,
-        'dihedrals': None,
-        'impropers': None
-    },
-    'NO': { # dummy
-        'pair': {
-            'style': 'lj/cut/coul/long',
-            'vdW': {'N_NO': (0.0690, 3.31), 'O_NO': (0.0974, 3.02)},
-            'charges': {'N_NO': 0.0, 'O_NO': 0.0}
-        },
-        'bonds': {('N_NO', 'O_NO'): ('harmonic', 100.0, 1.15)},
-        'angles': None,
-        'dihedrals': None,
-        'impropers': None
     },
     'CO2': { # carbon dioxide (small)
         'pair': {
@@ -107,28 +125,92 @@ TraPPE =  {
         'impropers': None,
         'mass': {'C_CO2': 12.011, 'O_CO2': 15.9994}
     },
-    'NO2': { # dummy
+    'NO2': { # S. Thompho et al., ACS Omega 2021, 6, 27, 17342-17352.: https://doi.org/10.1021/acsomega.1c01459
         'pair': {
             'style': 'lj/cut/coul/long',
-            'vdW': {'N_NO2': (0.0690, 3.31), 'O_NO2': (0.0974, 3.02)},
-            'charges': {'N_NO2': 0.46, 'O_NO2': -0.23}
+            'vdW': {'N_NO2': (0.0690, 3.240), 'O_NO2': (0.0974, 2.930)}, # N:0.4174 [kJ/mol],3.240 [A], O:0.5179 [kJ/mol], 2.930 [A]
+            'charges': {'N_NO2': 0.146, 'O_NO2': -0.073}
         },
-        'bonds': {('N_NO2', 'O_NO2'): ('harmonic', 100.0, 1.20)},
-        'angles': {('O_NO2', 'N_NO2', 'O_NO2'): ('harmonic', 100.0, 134.0)},
+        'bonds': {('N_NO2', 'O_NO2'): ('harmonic', 89.0, 1.20)},
+        'angles': {('O_NO2', 'N_NO2', 'O_NO2'): ('harmonic', 1.5, 134.1)},
         'dihedrals': None,
-        'impropers': None
+        'impropers': None,
+        'mass': {'N_NO2': 14.007, 'O_NO2': 15.9994}
     },
-    'SO2': { # dummy
+    'SO2': { # G. Kamath et al., J. Chem. Phys. 136, 044514 (2012): https://doi.org/10.1063/1.3677880
         'pair': {
             'style': 'lj/cut/coul/long',
-            'vdW': {'S_SO2': (0.250, 3.60), 'O_SO2': (0.170, 3.05)},
-            'charges': {'S_SO2': 0.64, 'O_SO2': -0.32}
+            'vdW': {'S_SO2': (0.0147, 3.39), 'O_SO2': (0.0157, 3.05)}, # S:73.8 [K], 3.39 [A], O:79.0 [K], 3.05 [A]
+            'charges': {'S_SO2': 0.59, 'O_SO2': -0.295}
         },
-        'bonds': {('S_SO2', 'O_SO2'): ('harmonic', 100.0, 1.43)},
-        'angles': {('O_SO2', 'S_SO2', 'O_SO2'): ('harmonic', 100.0, 119.5)},
+        'bonds': {('S_SO2', 'O_SO2'): ('harmonic', 125.0, 1.43)},
+        'angles': {('O_SO2', 'S_SO2', 'O_SO2'): ('harmonic', 11.0, 119.3)},
         'dihedrals': None,
-        'impropers': None
+        'impropers': None,
+        'mass': {'S_SO2': 32.06, 'O_SO2': 15.9994}
     },
+    'SCl2': { # dummy, Uses: organic synthesis, intermediates for pesticides, high pressure lubricants, disinfectants and sterilizers, chlorination agents
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'S_SCl2': (0.276, 3.55), 'Cl_SCl2': (0.265, 3.40)},
+            'charges': {'S_SCl2': 0.50, 'Cl_SCl2': -0.25}
+        },
+        'bonds': {('S_SCl2', 'Cl_SCl2'): ('harmonic', 250.0, 2.07)},
+        'angles': {('Cl_SCl2', 'S_SCl2', 'Cl_SCl2'): ('harmonic', 60.0, 103.0)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'S_SCl2': 32.06, 'Cl_SCl2': 35.453}
+    },
+    'SF2': { # dummy
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'S_SF2': (0.276, 3.55), 'F_SF2': (0.061, 3.12)},
+            'charges': {'S_SF2': 0.50, 'F_SF2': -0.25}
+        },
+        'bonds': {('S_SF2', 'F_SF2'): ('harmonic', 300.0, 1.56)},
+        'angles': {('F_SF2', 'S_SF2', 'F_SF2'): ('harmonic', 70.0, 98.0)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'S_SF2': 32.06, 'F_SF2': 18.998}
+    },
+    'PCl2': { # dummy, Uses: Organic synthesis, intermediate for pesticides
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'P_PCl2': (0.276, 3.55), 'Cl_PCl2': (0.265, 3.40)},
+            'charges': {'P_PCl2': 0.50, 'Cl_PCl2': -0.25}
+        },
+        'bonds': {('P_PCl2', 'Cl_PCl2'): ('harmonic', 250.0, 2.07)},
+        'angles': {('Cl_PCl2', 'P_PCl2', 'Cl_PCl2'): ('harmonic', 60.0, 103.0)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'P_PCl2': 30.97, 'Cl_PCl2': 35.453}
+    },
+    'PF2': { # dummy
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'P_PF2': (0.276, 3.55), 'F_PF2': (0.061, 3.12)},
+            'charges': {'P_PF2': 0.50, 'F_PF2': -0.25}
+        },
+        'bonds': {('P_PF2', 'F_PF2'): ('harmonic', 300.0, 1.56)},
+        'angles': {('F_PF2', 'P_PF2', 'F_PF2'): ('harmonic', 70.0, 98.0)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'P_PF2': 30.97, 'F_PF2': 18.998}
+    },
+    'CN2': { # dummy
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'C_CN2': (0.0072, 3.40), 'N_CN2': (0.0072, 3.3)},
+            'charges': {'C_CN2': 0.70, 'N_CN2': -0.35}
+        },
+        'bonds': {('C_CN2', 'N_CN2'): ('harmonic', 6.29, 1.16)},
+        'angles': {('N_CN2', 'C_CN2', 'N_CN2'): ('harmonic', 1.715, 120)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'C_CN2': 12.011, 'N_CN2': 14.007}
+    },
+    #--------------------------------------------------------------------------------------------------------
+    # The following structures are not yet in place:
     'SO3': { # dummy
         'pair': {
             'style': 'lj/cut/coul/long',
@@ -151,17 +233,6 @@ TraPPE =  {
         'dihedrals': None,
         'impropers': None
     },
-    'H2S': { # dummy
-        'pair': {
-            'style': 'lj/cut/coul/long',
-            'vdW': {'S_H2S': (0.1000, 3.60), 'H_H2S': (0.0200, 2.50)},
-            'charges': {'S_H2S': -0.34, 'H_H2S': 0.17}
-        },
-        'bonds': {('S_H2S', 'H_H2S'): ('harmonic', 100.0, 1.34)},
-        'angles': {('H_H2S', 'S_H2S', 'H_H2S'): ('harmonic', 100.0, 92.1)},
-        'dihedrals': None,
-        'impropers': None
-    },
     'HCN': { # dummy
         'pair': {
             'style': 'lj/cut/coul/long',
@@ -169,17 +240,6 @@ TraPPE =  {
             'charges': {'H_HCN': 0.19, 'C_HCN': -0.27, 'N_HCN': 0.08}
         },
         'bonds': {('H_HCN', 'C_HCN'): ('harmonic', 100.0, 1.06), ('C_HCN', 'N_HCN'): ('harmonic', 100.0, 1.16)},
-        'angles': None,
-        'dihedrals': None,
-        'impropers': None
-    },
-    'CN2': { # dummy
-        'pair': {
-            'style': 'lj/cut/coul/long',
-            'vdW': {'C_CN2': (0.1050, 3.40), 'N_CN2': (0.0690, 3.31)},
-            'charges': {'C_CN2': 0.0, 'N_CN2': 0.0}
-        },
-        'bonds': {('C_CN2', 'N_CN2'): ('harmonic', 100.0, 1.16)},
         'angles': None,
         'dihedrals': None,
         'impropers': None
@@ -202,6 +262,28 @@ TraPPE =  {
             'charges': {'C_CH4': 0.0} # q/e = 0.0
         },
         'bonds': None,
+        'angles': None,
+        'dihedrals': None,
+        'impropers': None
+    },
+    'CO': { # dummy
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'C_CO': (0.055, 3.75), 'O_CO': (0.170, 3.05)},
+            'charges': {'C_CO': 0.48, 'O_CO': -0.48}
+        },
+        'bonds': {('C_CO', 'O_CO'): ('harmonic', 100.0, 1.128)},
+        'angles': None,
+        'dihedrals': None,
+        'impropers': None
+    },
+    'NO': { # dummy
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'N_NO': (0.0690, 3.31), 'O_NO': (0.0974, 3.02)},
+            'charges': {'N_NO': 0.0, 'O_NO': 0.0}
+        },
+        'bonds': {('N_NO', 'O_NO'): ('harmonic', 100.0, 1.15)},
         'angles': None,
         'dihedrals': None,
         'impropers': None
