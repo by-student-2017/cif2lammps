@@ -694,9 +694,9 @@ def lammps_inputs(args):
             infile.write('thermo_style custom step time etotal ke temp pe emol evdwl ecoul elong etail vol press v_ngas v_wtp \n')
             infile.write('fix 1 all nvt temp 308.0 308.0 100.0 \n')
             infile.write('# NPT causes destruction, so NVT is used. For systems that expand without destruction, even NPT requires careful consideration. \n')
-            infile.write('fix 2 gas gcmc 100 1 1 0 1234567 308.0 ${mu} 0.01 mol MX2_mol  pressure 147.0 tfac_insert 1.667 full_energy \n')
+            infile.write('fix 2 gas gcmc 100 1 1 0 1234567 308.0 ${mu} 0.01 mol MX2_mol  pressure 147.0 tfac_insert $(5/3) full_energy \n')
             infile.write('# Note: The version of lammps used in the test requires 1 CPU to perform the calculations. \n')
-            infile.write('run 400000 # 100 [ps] = 0.1 [ns] \n')
+            infile.write('run 4000000 # 1000 [ps] = 1 [ns] \n')
         
         infile.write('\n')
         
