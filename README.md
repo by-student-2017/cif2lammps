@@ -81,7 +81,7 @@ cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 1x1x1 --add_molecule CO2,TraPPE,30
 ```
 - Carbon dioxide (CO2) has a critical point of 31.1°C and 7.38 MPa. Above this critical point, CO2 becomes a supercritical fluid, and the distinction between liquid and gas disappears.
-- I have not yet modified it to use both "--charge" and "--add_molecule". This will take a lot of time, and I need to prepare parameters for LJ excluding Coulomb force to explicitly add Coulomb force.
+- I have not yet modified it to use both "--charge" and "--add_molecule". This will take a lot of time, and I need to prepare parameters for LJ without Coulomb interaction to explicitly add Coulomb interaction.
 
 ## Help
 ```
