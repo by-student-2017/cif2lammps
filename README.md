@@ -71,7 +71,8 @@ conda activate cif2lammps_env
 cd cif2lammps
 python3 main_conversion.py --cifs ./../cifs --force_field UFF4MOF --outdir ./../unopt_lammps_data --read_cifs_pymatgen --replication 1x1x1 --add_molecule H2O,TIP4P_cutoff,1
 ```
-- UFF4MOF + MX2 molecule (TraPPE type) (e.g., O2) (Not recommended)
+- UFF4MOF + MX2 molecule (TraPPE type) (e.g., O2) (It is recommended to use a cif file with charge as close to 0 as possible.)
+Molecules (parameters) confirmed in papers, etc.: O2, N2, H2, H2S, H2O, CO2, NO2, SO2. Unconfirmed molecules: Cl2, H2Se, H2Te, ClO2, SF2, PCl2, PF2, CN2
 ```
 conda activate cif2lammps_env
 cd cif2lammps
