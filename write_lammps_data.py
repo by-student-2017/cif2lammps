@@ -682,10 +682,13 @@ def lammps_inputs(args):
         if add_molecule != None:
             infile.write('\n')
             infile.write('# GCMC, 0.1 MPa (= 1 bar) to 14.7 MPa at 308 K \n')
-            infile.write('variable mu equal -2.5 # <- You need to enter (e.g. HOMO energy in MOPAC, etc.) \n')
+            infile.write('variable mu equal -5.46 # <- You need to enter (e.g. HOMO energy [eV] in MOPAC, etc.) \n')
             infile.write('group gas type '+str(i)+':'+str(i+1)+' \n')
+            infile.write('variable ngas equal count(gas)/3 # The number of molecules \n')
+            infile.write('variable  wtp equal mass(gas)/mass(all)*100 # Mass Percent Concentration, wt.% [dimensionless] (Absolute, Not excess) \n')
+            infile.write('thermo_style custom step time etotal ke temp pe emol evdwl ecoul elong etail vol press v_ngas v_wtp \n')
             infile.write('fix 1 all npt temp 308.0 308.0 100.0 tri 1.0 147.0 1000.0 \n')
-            infile.write('fix 2 gas gcmc 10 100 100 0 1234567 308.0 ${mu} 0.1 mol MX2_mol full_energy \n')
+            infile.write('fix 2 gas gcmc 100 1 1 0 1234567 308.0 ${mu} 0.01 mol MX2_mol full_energy \n')
             infile.write('# Note: The version of lammps used in the test requires 1 CPU to perform the calculations. \n')
             infile.write('run 400000 # 100 [ps] = 0.1 [ns] \n')
         
