@@ -124,6 +124,15 @@ MOPAC became open source from the 2016 version, and it is now possible to calcul
 | C4   | 0.605064 | 0.384265 | 0.420426 | 0.56 | 0.56 |
 
 
+- ## Installation (Lammps)
+1. LAMMPS Windows Installer Repository (http://packages.lammps.org/windows.html) -> LAMMPS Binaries Repository: ./legacy/admin/64bit (https://rpm.lammps.org/windows/legacy/admin/64bit/index.html)
+2. LAMMPS-64bit-22Dec2022-MSMPI-admin.exe (https://rpm.lammps.org/windows/legacy/admin/64bit/LAMMPS-64bit-22Dec2022-MSMPI-admin.exe)
+- LAMMPS Windows Installer Repository -> legacy -> admin -> 64bit -> LAMMPS-64bit-22Dec2022-MSMPI-admin.exe
+
+## Microsoft MPI
+1. Microsoft MPI v10.1.2 (https://www.microsoft.com/en-us/download/details.aspx?id=100593)
+
+
 ## Usage
 Generally speaking just run:
 ```
