@@ -1,0 +1,10 @@
+#--------------------------------------------------------------------------------------------------------------------------------------------
+Note1: I wanted to make everything NPT, but since ZIF-8 was destroyed in GCMC, I made the area up to GCMC NPT.
+
+Note2: Even if you do not specify the full_energy option, it will be automatically specified according to the Lammps side d system. In this example, 
+the full_energy option is included and it will only run on one CPU. If you want to reduce the time, please either separate the input file from GCMC, 
+or use a version that can run in parallel even if you include the full_energy option.
+
+Note3: Carbon dioxide (CO2) has a critical point of 31.1°C and 7.38 MPa. Above this critical point, CO2 becomes a supercritical fluid, 
+and the distinction between liquid and gas disappears.
+#--------------------------------------------------------------------------------------------------------------------------------------------
