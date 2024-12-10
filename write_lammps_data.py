@@ -683,10 +683,10 @@ def lammps_inputs(args):
             infile.write('\n')
             infile.write('# GCMC, 0.1 MPa (= 1 bar) to 14.7 MPa at 308 K \n')
             infile.write('variable mu equal -2.5 # <- You need to enter (e.g. HOMO energy in MOPAC, etc.) \n')
-            infile.write('processors 1 1 1 # This is a single CPU calculation. Depending on the version of lammps, it may be possible to parallelize it. \n')
             infile.write('group gas type '+str(i)+':'+str(i+1)+' \n')
             infile.write('fix 1 all npt temp 308.0 308.0 100.0 tri 1.0 147.0 1000.0 \n')
             infile.write('fix 2 gas gcmc 10 100 100 0 1234567 308.0 ${mu} 0.1 mol MX2_mol full_energy \n')
+            infile.write('# Note: The version of lammps used in the test requires 1 CPU to perform the calculations. \n')
             infile.write('run 400000 # 100 [ps] = 0.1 [ns] \n')
         
         infile.write('\n')
