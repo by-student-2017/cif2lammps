@@ -3,7 +3,7 @@
 # vdW:kcal/mol, Angstrom
 # 1 [K] -> 1.380649e-23/4184*6.022e22 [kcal/mol]
 TraPPE =  {
-    'O2': {
+    'O2': { # oxygen (small)
         'pair': {
             'style': 'lj/cut/coul/long', 
             'vdW': {'O_O2': (0.0974,3.02), 'O_com': (0.0,0.0)},  # epsilon NN/kB = 49.0 K = 0.0974 kcal/mol, sigma of NN = 3.02 Angstrom
@@ -15,7 +15,7 @@ TraPPE =  {
         'impropers': None,
         'mass': {'O_O2': 15.9994, 'O_com': 0.1}
     },
-    'N2': {
+    'N2': { # nitrogen (small)
         'pair': {
             'style': 'lj/cut/coul/long',
             'vdW': {'N_N2': (0.0715, 3.31),'N_com': (0.0,0.0)}, # epsilon NN/kB = 36.0 K = 0.0715 kcal/mol, sigma of NN = 3.31 Angstrom
@@ -61,7 +61,7 @@ TraPPE =  {
     #    'dihedrals': None,
     #    'impropers': None
     #},
-    'H2O1': {
+    'H2O': { # SPC-pol3 (pol)
         'pair': {
             'style': 'lj/cut/coul/long',
             'vdW': {'O_w': (0.2683, 2.665), 'H_w': (0.0, 0.0)},
@@ -70,7 +70,8 @@ TraPPE =  {
         'bonds': {('O_w', 'H_w'): ('harmonic', 450.0, 1.0)},
         'angles': {('H_w', 'O_w', 'H_w'): ('harmonic', 55.0, 109.47)},
         'dihedrals': None,
-        'impropers': None
+        'impropers': None,
+        'mass': {'O_w': 15.9994, 'H_w': 1.00794}
     },
     'CO': { # dummy
         'pair': {
@@ -94,16 +95,17 @@ TraPPE =  {
         'dihedrals': None,
         'impropers': None
     },
-    'CO2': {
+    'CO2': { # carbon dioxide (small)
         'pair': {
             'style': 'lj/cut/coul/long',
-            'vdW': {'C_CO2': (0.0537, 2.800), 'O_CO2': (0.1570, 3.050)},
+            'vdW': {'C_CO2': (0.00537, 2.800), 'O_CO2': (0.1570, 3.050)},
             'charges': {'C_CO2': 0.70, 'O_CO2': -0.35}
         },
         'bonds': {('C_CO2', 'O_CO2'): ('harmonic', 5000.0, 1.16)},
         'angles': {('O_CO2', 'C_CO2', 'O_CO2'): ('harmonic', 500.0, 180.0)},
         'dihedrals': None,
-        'impropers': None
+        'impropers': None,
+        'mass': {'C_CO2': 12.011, 'O_CO2': 15.9994}
     },
     'NO2': { # dummy
         'pair': {
