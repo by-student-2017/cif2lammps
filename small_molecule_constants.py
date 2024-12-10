@@ -10,8 +10,8 @@ TraPPE =  { # O2, N2, H2, H2S, H2O, CO2, NO2, SO2
             'vdW': {'O_O2': (0.0974,3.02), 'O_com': (0.0,0.0)},  # epsilon NN/kB = 49.0 K = 0.0974 kcal/mol, sigma of NN = 3.02 Angstrom
             'charges': {'O_O2': -0.113, 'O_com': 0.226} # q/e = -0.113 on N atoms, countercharge on COM (M)
         },
-        'bonds': {('O_O2', 'O_com'): ('harmonic',1200.0,0.605)}, # molecule should be kept rigid, force constants don't matter (# O-O bond length = 1.21 Angstrom)
-        'angles': {('O_O2', 'O_com', 'O_O2'): ('harmonic',500.0,180.0)}, # molecule should be kept rigid, force constants don't matter
+        'bonds': {('O_O2', 'O_com'): ('harmonic', 70.25, 0.605)}, # molecule should be kept rigid, force constants don't matter (# O-O bond length = 1.21 Angstrom)
+        'angles': {('O_O2', 'O_com', 'O_O2'): ('harmonic', 281, 180.0)}, # molecule should be kept rigid, force constants don't matter
         'dihedrals': None,
         'impropers': None,
         'mass': {'O_O2': 15.9994, 'O_com': 0.1}
@@ -22,8 +22,8 @@ TraPPE =  { # O2, N2, H2, H2S, H2O, CO2, NO2, SO2
             'vdW': {'N_N2': (0.0715, 3.31),'N_com': (0.0,0.0)}, # epsilon NN/kB = 36.0 K = 0.0715 kcal/mol, sigma of NN = 3.31 Angstrom
             'charges': {'N_N2': -0.482, 'N_com': 0.964}  # q/e = -0.482 on N atoms, countercharge on COM (M)
         },
-        'bonds': {('N_com', 'N_com'): ('harmonic', 5000.0, 0.550)},  # N-N bond length = 1.10 Angstrom (The value is set at 5000.0 to reflect the strength of the triple bond in the N2 molecule.)
-        'angles': {('N_N2', 'N_com', 'N_N2'): ('harmonic',500.0,180.0)}, # molecule should be kept rigid, force constants don't matter
+        'bonds': {('N_com', 'N_com'): ('harmonic', 137, 0.550)},  # N-N bond length = 1.10 Angstrom (The value is set at 5000.0 to reflect the strength of the triple bond in the N2 molecule.)
+        'angles': {('N_N2', 'N_com', 'N_N2'): ('harmonic', 550.0, 180.0)}, # molecule should be kept rigid, force constants don't matter
         'dihedrals': None,
         'impropers': None,
         'mass': {'N_N2': 14.007, 'N_com': 0.1}
@@ -34,20 +34,32 @@ TraPPE =  { # O2, N2, H2, H2S, H2O, CO2, NO2, SO2
             'vdW': {'H_H2': (0.0016, 3.03), 'H_com': (0.0,0.0)},  # epsilon HH/kB = 8.06 K = 0.00160 kcal/mol, sigma of HH = 3.03 Angstrom
             'charges': {'H_H2': 0.47, 'H_com': -0.94}  # q/e = 0.47 on H atoms, countercharge on COM (M)
         },
-        'bonds': {('H_H2', 'H_com'): ('harmonic', 550.0, 0.3705)},  # H-H bond length = 0.741 Angstrom
-        'angles': {('H_H2', 'H_com', 'H_H2'): ('harmonic',500.0,180.0)}, # molecule should be kept rigid, force constants don't matter
+        'bonds': {('H_H2', 'H_com'): ('harmonic', 34.25, 0.3705)},  # H-H bond length = 0.741 Angstrom
+        'angles': {('H_H2', 'H_com', 'H_H2'): ('harmonic', 137, 180.0)}, # molecule should be kept rigid, force constants don't matter
         'dihedrals': None,
         'impropers': None,
         'mass': {'H_H2': 1.00794, 'H_com': 0.1}
     },
+    'F2': { # dummy
+        'pair': {
+            'style': 'lj/cut/coul/long',
+            'vdW': {'F_F2': (0.0298, 3.40), 'F_com': (0.0,0.0)},
+            'charges': {'F_F2': 0.0, 'F_com': 0.0}
+        },
+        'bonds': {('F_F2', 'F_com'): ('harmonic', 8.335, 0.7055)},
+        'angles': {('F_F2', 'F_com', 'F_F2'): ('harmonic', 33.4, 180.0)},
+        'dihedrals': None,
+        'impropers': None,
+        'mass': {'F_F2': 18.998, 'F_com': 0.0}
+    },
     'Cl2': { # dummy, Uses: Disinfection and sterilization, bleach, chemical industry, pesticide manufacturing, pharmaceutical manufacturing
         'pair': {
             'style': 'lj/cut/coul/long',
-            'vdW': {'Cl_Cl2': (0.0298, 3.40), 'Cl_com': (0.0,0.0)},  # epsilon HH/kB = 8.06 K = 0.00160 kcal/mol, sigma of HH = 3.03 Angstrom
-            'charges': {'Cl_Cl2': 0.0, 'Cl_com': 0.0}  # q/e = 0.47 on H atoms, countercharge on COM (M)
+            'vdW': {'Cl_Cl2': (0.368, 4.12), 'Cl_com': (0.0,0.0)},
+            'charges': {'Cl_Cl2': 0.0, 'Cl_com': 0.0}
         },
-        'bonds': {('Cl_Cl2', 'Cl_com'): ('harmonic', 58.0, 0.9935)},
-        'angles': {('Cl_Cl2', 'Cl_com', 'Cl_Cl2'): ('harmonic', 50.0,180.0)},
+        'bonds': {('Cl_Cl2', 'Cl_com'): ('harmonic', 15.6, 0.49675)},
+        'angles': {('Cl_Cl2', 'Cl_com', 'Cl_Cl2'): ('harmonic', 62.5, 180.0)},
         'dihedrals': None,
         'impropers': None,
         'mass': {'Cl_Cl2': 35.453, 'Cl_com': 0.1}
