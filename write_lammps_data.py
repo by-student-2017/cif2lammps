@@ -673,10 +673,19 @@ def lammps_inputs(args):
         if add_molecule != None:
             infile.write('fix 1 all npt temp 300.0 300.0 100.0 tri 1.0 1.0 1000.0 \n')
             infile.write('run 400000 # 100 [ps] = 0.1 [ns] \n')
+            infile.write('unfix 1 \n')
         elif charges:
             infile.write('run 200000 # 100 [ps] = 0.1 [ns] \n')
         else:
             infile.write('run 100000 # 100 [ps] = 0.1 [ns] \n')
+        
+        if add_molecule != None:
+            infile.write('\n')
+            infile.write('# GCMC, 0.1 MPa (= 1 bar) to 14.7 MPa at 308 K \n')
+            infile.write('group gas type '+str(i)+':'+str(i+1)+' \n')
+            infile.write('fix 1 all npt temp 308.0 308.0 100.0 tri 1.0 147.0 1000.0 \n')
+            infile.write('fix 2 gas gcmc 10 100 100 0 1234567 308.0 -2.5 0.1 mol MX2_mol \n')
+            infile.write('run 400000 # 100 [ps] = 0.1 [ns] \n')
         
         infile.write('\n')
         
