@@ -190,11 +190,6 @@ Install instructions for ASE can be found here: https://wiki.fysik.dtu.dk/ase/in
 [4] T. Ohmameuda, The Gunma-Kosen Review 40 (2022) 51-58.: https://doi.org/10.51030/krev.40.0_51 (Open Access, Japanese)  
 
 
-## For Minor changes and additions and Acknowledgment
-- This project (modified version) is/was partially supported by the following :
-  + ATSUMITEC Co., Ltd.
-
-
 ## Other information
 None of the following installations worked properly without "--read_cifs_pymatgen". For ZIF-FF, there is a problem where integers in the data file become symbols (characters) containing information about the corresponding elements.
 - Installation (ubuntu 22.04 LTS or WSL2, Python 3.7 version)
