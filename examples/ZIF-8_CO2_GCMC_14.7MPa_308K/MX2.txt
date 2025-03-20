@@ -1,0 +1,50 @@
+# MX2 molecule. useable for TraPPE in LAMMPS.
+
+3 atoms
+2 bonds
+1 angles
+
+Coords
+
+1    0.00000   0.00000   0.00000
+2    0.00000   0.00000  -1.16
+3    0.00000   0.00000  +1.16
+
+Types
+
+1    6
+2    7
+3    7
+
+Charges
+
+1    -0.35
+2    0.7
+3    0.7
+
+Bonds
+
+1    7 1 2
+2    7 1 3
+
+Angles
+
+1    11 2 1 3
+
+Shake Flags
+
+1 1
+2 1
+3 1
+
+Shake Atoms
+
+1 1 2 3
+2 1 2 3
+3 1 2 3
+
+Shake Bond Types
+
+1 7 7 11
+2 7 7 11
+3 7 7 11
